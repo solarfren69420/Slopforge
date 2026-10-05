@@ -1,0 +1,39 @@
+name: Add a project to Slopforge
+description: Suggest an upstream game project, tool, or engine.
+title: 'Add: '
+body:
+  - type: input
+    id: repository
+    attributes:
+      label: Upstream GitHub repository
+      placeholder: https://github.com/owner/project
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Section
+      options: [Games, Tools & software]
+    validations:
+      required: true
+  - type: input
+    id: method
+    attributes:
+      label: Project type
+      description: Reimplementation, source port, original game, independent tool, compatibility layer, or analysis tool.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: What does it do, and where does upstream document that?
+      description: Link its README or documentation. Include platform targets, data requirements, license, and development status.
+    validations:
+      required: true
+  - type: checkboxes
+    id: content
+    attributes:
+      label: Content policy
+      options:
+        - label: This suggestion does not attach ROMs, proprietary game assets, cracks, leaked source, or license bypasses.
+          required: true

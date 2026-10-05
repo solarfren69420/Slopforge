@@ -1,0 +1,62 @@
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict');
+const path=require('node:path');
+const fs=require('node:fs');
+const url=process.env.SLOPFORGE_URL || 'http://localhost:8080';
+(async()=>{
+ const browser=await chromium.launch({executablePath:process.env.CHROME_PATH||undefined,headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+ const context=await browser.newContext({viewport:{width:1680,height:1050}});
+ const page=await context.newPage(),errors=[],failed=[];
+ page.on('pageerror',e=>errors.push(e.message));
+ page.on('response',r=>{if(r.status()>=400)failed.push(r.url()+' '+r.status());});
+ const ready=async()=>page.waitForFunction(()=>document.querySelector('#result-count').textContent.match(/^\d+ projects?$/));
+ const count=async()=>page.locator('.project-card').count();
+ const click=async(selector)=>page.locator(selector).first().click();
+ const output=path.resolve(__dirname,'../test-results');fs.mkdirSync(output,{recursive:true});
+ try{
+  await page.goto(url);await ready();
+  const catalog=await (await page.request.get(new URL('projects.json',url.endsWith('/')?url:url+'/').href)).json();
+  assert.equal(await count(),catalog.projects.length);
+  const ids=await page.locator('.project-card').evaluateAll(nodes=>nodes.map(n=>n.dataset.projectId));assert.equal(new Set(ids).size,ids.length);
+  assert.equal(await page.locator('a.repo-button').count(),catalog.projects.length);
+  await page.locator('.card-art img').evaluateAll(images=>images.forEach(img=>img.loading='eager'));
+  await page.waitForFunction(()=>[...document.querySelectorAll('.card-art img')].every(img=>img.complete&&img.naturalWidth>0));
+  await page.screenshot({path:path.join(output,'desktop.png'),fullPage:true});
+  await page.screenshot({path:path.join(output,'desktop-viewport.png')});
+  await click('.main-nav [data-view="games"]');assert.equal(await count(),catalog.projects.filter(p=>p.kind==='games').length);
+  await click('.main-nav [data-view="tools"]');assert.equal(await count(),catalog.projects.filter(p=>p.kind==='tools').length);
+  assert.equal(await page.locator('body').getAttribute('data-view'),'tools');
+  await click('[data-category="CAD & engineering"]');assert.equal(await count(),catalog.projects.filter(p=>p.kind==='tools'&&p.category==='CAD & engineering').length);
+  await click('#reset');
+  await page.locator('#search').fill('Krita');await page.waitForFunction(()=>document.querySelectorAll('.project-card').length===1);
+  assert.equal(await page.locator('.project-title').innerText(),'Krita');
+  await click('[data-save="krita"]');await click('.main-nav [data-view="saved"]');assert.equal(await count(),1);
+  await page.reload();await ready();assert.equal(await count(),1);assert.equal(await page.locator('#saved-count').innerText(),'1');
+  await click('[data-save="krita"]');assert.equal(await count(),0);assert.equal(await page.locator('#empty').isVisible(),true);
+  await click('#empty-reset');assert.equal(await count(),catalog.projects.length);
+  await click('.main-nav [data-view="tools"]');await click('[data-platform="Linux"]');
+  await page.locator('#method').selectOption('Compatibility layer');
+  assert.equal(await count(),catalog.projects.filter(p=>p.kind==='tools'&&p.method==='Compatibility layer'&&p.platforms.includes('Linux')).length);
+  assert.match(page.url(),/platform=Linux/);assert.match(page.url(),/method=Compatibility/);
+  await page.reload();await ready();assert.equal(await count(),2);
+  await click('#reset');await click('.main-nav [data-view="games"]');await click('[data-tag="Multiplayer"]');
+  assert.equal(await count(),catalog.projects.filter(p=>p.kind==='games'&&p.tags.includes('Multiplayer')).length);
+  await click('#reset');await page.locator('#search').fill('zzzz-no-project');await page.waitForFunction(()=>document.querySelector('#empty').hidden===false);assert.equal(await count(),0);
+  await click('#reset');await page.locator('#sort').selectOption('name');
+  const names=await page.locator('.project-title').allTextContents();assert.deepEqual(names,[...names].sort((a,b)=>a.localeCompare(b)));
+  await click('[data-detail="openrct2"]');assert.equal(await page.locator('#detail').isVisible(),true);assert.match(await page.locator('#detail-body').innerText(),/game data is required/);
+  assert.match(page.url(),/#project=openrct2/);await page.keyboard.press('Escape');await page.waitForFunction(()=>!location.hash.includes('project='));assert.equal(await page.locator('#detail').isVisible(),false);
+  await page.goto(new URL('?view=tools#project=blender',url.endsWith('/')?url:url+'/').href);await ready();await page.waitForSelector('#detail[open]');assert.equal(await page.locator('#detail-title').innerText(),'Blender');
+  await page.keyboard.press('Escape');await page.keyboard.press('/');assert.equal(await page.locator('#search').evaluate(n=>n===document.activeElement),true);
+  await click('#about-button');assert.equal(await page.locator('#about').isVisible(),true);await page.keyboard.press('Escape');
+  await page.goto(url);await ready();await click('.main-nav [data-view="games"]');await click('.main-nav [data-view="tools"]');await page.goBack();assert.equal(await page.locator('body').getAttribute('data-view'),'games');
+  for(const width of [360,390,768,1024,1440,1680]){
+    await page.setViewportSize({width,height:900});await page.goto(url);await ready();
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,`Overflow at ${width}px`);
+    if(width===390)await page.screenshot({path:path.join(output,'mobile.png'),fullPage:true});
+    if(width<720){await click('.main-nav [data-view="tools"]');assert.equal(await count(),catalog.projects.filter(p=>p.kind==='tools').length);await page.locator('#mobile-category').selectOption('CAD & engineering');assert.equal(await count(),2);await page.locator('#mobile-platform').selectOption('Linux');assert.equal(await count(),2);}
+  }
+  assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);
+  console.log('Browser checks passed: inventory, links, search, combined filters, sorting, favorites, persistence, empty states, shared URLs, dialogs, history, keyboard, and six responsive widths.');
+ }finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exit(1)});

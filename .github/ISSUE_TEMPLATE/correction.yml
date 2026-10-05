@@ -1,0 +1,17 @@
+name: Correct a listing
+description: Report an inaccurate description, label, link, or requirement.
+title: 'Correction: '
+body:
+  - type: input
+    id: project
+    attributes:
+      label: Project name or repository
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What should change?
+      description: Include upstream evidence for the correction. Do not attach game files.
+    validations:
+      required: true

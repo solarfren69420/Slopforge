@@ -1,0 +1,12 @@
+const { chromium } = require('playwright');
+const path = require('node:path');
+const fs = require('node:fs');
+const { pathToFileURL } = require('node:url');
+(async () => {
+  const root = path.resolve(__dirname, '..');
+  const art = pathToFileURL(path.join(root, 'web/assets/forge-hero.webp')).href;
+  const html = `<!doctype html><meta charset="utf-8"><style>*{box-sizing:border-box}body{margin:0;width:1200px;height:630px;background:#090e1b url('${art}') center/cover;color:#f2f6ff;font-family:Inter,system-ui,sans-serif}.shade{position:absolute;inset:0;background:linear-gradient(90deg,#080c18ee,#090d1eb5 42%,transparent 80%),linear-gradient(0deg,#0c1023c0,transparent 35%)}main{position:relative;padding:45px 56px}.brand{font-size:30px;font-weight:850;letter-spacing:-1px}.brand span{color:#b989ff}.line{margin-top:24px;font-size:10px;letter-spacing:3px;color:#a7bedb}h1{font-size:76px;line-height:1.06;letter-spacing:-4px;margin:27px 0 23px;font-weight:850}h1 span{background:linear-gradient(90deg,#77d7ff,#bd92ff);background-clip:text;color:transparent}p{font-size:15px;line-height:1.7;color:#bac9df;max-width:410px}.footer{position:absolute;bottom:38px;left:56px;right:56px;display:flex;justify-content:space-between;font-size:11px;letter-spacing:1px;color:#a3b5d2}.dot{color:#74d9b0;margin-right:7px}</style><div class="shade"></div><main><div class="brand">Slop<span>forge</span></div><div class="line">GAMES & TOOLS · THE COMMUNITY FORGE</div><h1>Play more.<br>Make more.<br><span>Own your tools.</span></h1><p>Community game revivals. Open creative tools.<br>Find your next project. Follow the source.</p></main><div class="footer"><span><span class="dot">●</span>COMMUNITY BUILT. SOURCE INCLUDED.</span><span>solarfren69420.github.io/Slopforge</span></div>`;
+  const temp = path.join(root, 'test-results/brand.html');fs.mkdirSync(path.dirname(temp), {recursive:true});fs.writeFileSync(temp,html);
+  const browser = await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH || undefined,args:['--no-sandbox','--allow-file-access-from-files']});
+  try { const page=await browser.newPage({viewport:{width:1200,height:630},deviceScaleFactor:1});await page.goto(pathToFileURL(temp).href);await page.screenshot({path:path.join(root,'web/assets/social-preview.jpg'),type:'jpeg',quality:92});console.log('Saved web/assets/social-preview.jpg (1200 × 630)'); } finally { await browser.close(); }
+})().catch(e=>{console.error(e);process.exit(1)});

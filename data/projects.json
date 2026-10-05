@@ -1,0 +1,923 @@
+{
+  "version": 1,
+  "reviewed": "2026-10-05",
+  "review_scope": "Upstream repository identity and basic purpose reviewed. Platform targets are upstream-listed families, not installation or gameplay tests. No completion metrics are asserted.",
+  "projects": [
+    {
+      "id": "openrct2",
+      "name": "OpenRCT2",
+      "repo": "https://github.com/OpenRCT2/OpenRCT2",
+      "kind": "games",
+      "category": "Simulation",
+      "method": "Reimplementation",
+      "description": "A community-built RollerCoaster Tycoon 2 engine with modern conveniences and cooperative park building.",
+      "data_note": "RCT2 game data is required. Obtain the original game legally and follow the upstream installation guide.",
+      "language": "C++",
+      "tags": [
+        "BYOD",
+        "Multiplayer",
+        "Mod support"
+      ],
+      "monogram": "RCT",
+      "art": "park",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "RCT2 game data is required. Obtain the original game legally and follow the upstream installation guide.",
+      "reviewed": "2026-10-05",
+      "featured": true,
+      "hue": 190
+    },
+    {
+      "id": "devilutionx",
+      "name": "DevilutionX",
+      "repo": "https://github.com/diasurgical/DevilutionX",
+      "kind": "games",
+      "category": "RPG",
+      "method": "Source port",
+      "description": "Diablo and Hellfire on modern systems, with optional quality-of-life improvements.",
+      "data_note": "Original Diablo data is required for the full game. Upstream also documents the shareware option.",
+      "language": "C++",
+      "tags": [
+        "BYOD",
+        "Controller support",
+        "Multiplayer"
+      ],
+      "monogram": "DX",
+      "art": "dungeon",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Original Diablo data is required for the full game. Upstream also documents the shareware option.",
+      "reviewed": "2026-10-05",
+      "featured": true,
+      "hue": 201
+    },
+    {
+      "id": "openttd",
+      "name": "OpenTTD",
+      "repo": "https://github.com/OpenTTD/OpenTTD",
+      "kind": "games",
+      "category": "Simulation",
+      "method": "Reimplementation",
+      "description": "Build a transport empire in an open-source simulation inspired by Transport Tycoon Deluxe.",
+      "data_note": "Use the freely licensed OpenGFX, OpenSFX and OpenMSX sets described upstream, or compatible original data obtained legally.",
+      "language": "C++",
+      "tags": [
+        "BYOD",
+        "Multiplayer",
+        "Mod support"
+      ],
+      "monogram": "TTD",
+      "art": "city",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Use the freely licensed OpenGFX, OpenSFX and OpenMSX sets described upstream, or compatible original data obtained legally.",
+      "reviewed": "2026-10-05",
+      "featured": true,
+      "hue": 212
+    },
+    {
+      "id": "openmw",
+      "name": "OpenMW",
+      "repo": "https://github.com/OpenMW/openmw",
+      "kind": "games",
+      "category": "RPG",
+      "method": "Reimplementation",
+      "description": "An open-source engine for exploring Morrowind on modern systems.",
+      "data_note": "Morrowind game data is required. This GitHub repository is a mirror; main development and issue tracking are on GitLab.",
+      "language": "C++",
+      "tags": [
+        "BYOD",
+        "Mod support"
+      ],
+      "monogram": "MW",
+      "art": "landscape",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Morrowind game data is required. This GitHub repository is a mirror; main development and issue tracking are on GitLab.",
+      "reviewed": "2026-10-05",
+      "featured": true,
+      "hue": 223
+    },
+    {
+      "id": "scummvm",
+      "name": "ScummVM",
+      "repo": "https://github.com/scummvm/scummvm",
+      "kind": "games",
+      "category": "Adventure",
+      "method": "Reimplementation",
+      "description": "A collection of engines that runs supported classic adventure and role-playing games.",
+      "data_note": "Supply legally obtained data for a supported game. Requirements vary by engine; upstream lists compatible games.",
+      "language": "C++",
+      "tags": [
+        "BYOD",
+        "Classic games"
+      ],
+      "monogram": "VM",
+      "art": "adventure",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Supply legally obtained data for a supported game. Requirements vary by engine; upstream lists compatible games.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 234
+    },
+    {
+      "id": "force-engine",
+      "name": "The Force Engine",
+      "repo": "https://github.com/TheForceEngine/TheForceEngine",
+      "kind": "games",
+      "category": "Shooter",
+      "method": "Reimplementation",
+      "description": "A modern engine replacement for Dark Forces with support for community mods.",
+      "data_note": "Dark Forces game data is required. Future upstream plans are not treated as released support.",
+      "language": "C++",
+      "tags": [
+        "BYOD",
+        "Mod support"
+      ],
+      "monogram": "TFE",
+      "art": "space",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Dark Forces game data is required. Future upstream plans are not treated as released support.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 245
+    },
+    {
+      "id": "gzdoom",
+      "name": "GZDoom",
+      "repo": "https://github.com/ZDoom/gzdoom",
+      "kind": "games",
+      "category": "Shooter",
+      "method": "Source port",
+      "description": "A Doom-engine source port with modern rendering and extensive scripting possibilities.",
+      "data_note": "Supply a legally obtained compatible IWAD, or use a freely licensed compatible project such as Freedoom. This directory provides neither.",
+      "language": "C++",
+      "tags": [
+        "BYOD",
+        "Mod support"
+      ],
+      "monogram": "GZ",
+      "art": "space",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Supply a legally obtained compatible IWAD, or use a freely licensed compatible project such as Freedoom. This directory provides neither.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 256
+    },
+    {
+      "id": "corsixth",
+      "name": "CorsixTH",
+      "repo": "https://github.com/CorsixTH/CorsixTH",
+      "kind": "games",
+      "category": "Simulation",
+      "method": "Reimplementation",
+      "description": "Revisit hospital management with an open-source Theme Hospital engine.",
+      "data_note": "Theme Hospital data is required; see the upstream installation guide for supported data sources.",
+      "language": "C++ / Lua",
+      "tags": [
+        "BYOD",
+        "Classic games"
+      ],
+      "monogram": "TH",
+      "art": "city",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Theme Hospital data is required; see the upstream installation guide for supported data sources.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 267
+    },
+    {
+      "id": "fallout2-ce",
+      "name": "Fallout 2 CE",
+      "repo": "https://github.com/alexbatalov/fallout2-ce",
+      "kind": "games",
+      "category": "RPG",
+      "method": "Reimplementation",
+      "description": "A community edition that brings Fallout 2 to modern operating systems.",
+      "data_note": "Original Fallout 2 game data is required. Supported versions and setup steps are documented upstream.",
+      "language": "C++",
+      "tags": [
+        "BYOD",
+        "Classic games"
+      ],
+      "monogram": "F2",
+      "art": "dungeon",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Original Fallout 2 game data is required. Supported versions and setup steps are documented upstream.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 278
+    },
+    {
+      "id": "openra",
+      "name": "OpenRA",
+      "repo": "https://github.com/OpenRA/OpenRA",
+      "kind": "games",
+      "category": "Strategy",
+      "method": "Reimplementation",
+      "description": "A community strategy engine for classic Westwood-style real-time battles.",
+      "data_note": "Upstream manages installation of game content. Some mods or features may require original files; review the project's content instructions.",
+      "language": "C#",
+      "tags": [
+        "BYOD",
+        "Multiplayer",
+        "Mod support"
+      ],
+      "monogram": "RA",
+      "art": "strategy",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream manages installation of game content. Some mods or features may require original files; review the project's content instructions.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 289
+    },
+    {
+      "id": "supertuxkart",
+      "name": "SuperTuxKart",
+      "repo": "https://github.com/supertuxkart/stk-code",
+      "kind": "games",
+      "category": "Racing",
+      "method": "Original open-source game",
+      "description": "An open-source kart racer with original tracks, characters, and network play.",
+      "data_note": "Upstream provides separately licensed game data. Slopforge links to the code repository and does not redistribute that data.",
+      "language": "C++",
+      "tags": [
+        "Multiplayer",
+        "Controller support"
+      ],
+      "monogram": "STK",
+      "art": "racing",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream provides separately licensed game data. Slopforge links to the code repository and does not redistribute that data.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 300
+    },
+    {
+      "id": "supertux",
+      "name": "SuperTux",
+      "repo": "https://github.com/SuperTux/supertux",
+      "kind": "games",
+      "category": "Platformer",
+      "method": "Original open-source game",
+      "description": "Run and jump through a community-developed 2D platform adventure.",
+      "data_note": "Upstream supplies its own licensed assets; this catalog includes only a description and a repository link.",
+      "language": "C++",
+      "tags": [
+        "Controller support"
+      ],
+      "monogram": "TUX",
+      "art": "platformer",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream supplies its own licensed assets; this catalog includes only a description and a repository link.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 311
+    },
+    {
+      "id": "luanti",
+      "name": "Luanti",
+      "repo": "https://github.com/luanti-org/luanti",
+      "kind": "games",
+      "category": "Sandbox",
+      "method": "Game creation platform",
+      "description": "A voxel game-creation platform, formerly Minetest, built for community games and mods.",
+      "data_note": "Install a separately licensed game or mod through the upstream ecosystem. This is a platform, not a bundled game catalog.",
+      "language": "C++ / Lua",
+      "tags": [
+        "Multiplayer",
+        "Mod support"
+      ],
+      "monogram": "LT",
+      "art": "voxel",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Install a separately licensed game or mod through the upstream ecosystem. This is a platform, not a bundled game catalog.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 322
+    },
+    {
+      "id": "wesnoth",
+      "name": "The Battle for Wesnoth",
+      "repo": "https://github.com/wesnoth/wesnoth",
+      "kind": "games",
+      "category": "Strategy",
+      "method": "Original open-source game",
+      "description": "An open-source fantasy strategy game with campaigns and community-made add-ons.",
+      "data_note": "Upstream distributes its own licensed code and assets. No game files are included here.",
+      "language": "C++",
+      "tags": [
+        "Multiplayer",
+        "Mod support"
+      ],
+      "monogram": "W",
+      "art": "landscape",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream distributes its own licensed code and assets. No game files are included here.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 333
+    },
+    {
+      "id": "openage",
+      "name": "openage",
+      "repo": "https://github.com/SFTtech/openage",
+      "kind": "games",
+      "category": "Strategy",
+      "method": "Reimplementation",
+      "description": "An engine project rebuilding the foundations of classic Age of Empires-style strategy.",
+      "data_note": "Experimental engine work, not a completed drop-in game. Original Age of Empires game data is required; consult upstream status and setup.",
+      "language": "C++ / Python",
+      "tags": [
+        "BYOD",
+        "Experimental"
+      ],
+      "monogram": "AGE",
+      "art": "strategy",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Experimental engine work, not a completed drop-in game. Original Age of Empires game data is required; consult upstream status and setup.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 344
+    },
+    {
+      "id": "krita",
+      "name": "Krita",
+      "repo": "https://github.com/KDE/krita",
+      "kind": "tools",
+      "category": "Graphic design",
+      "method": "Independent open-source tool",
+      "description": "A digital painting studio for illustration, concept art, and animation.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C++",
+      "tags": [
+        "Creative"
+      ],
+      "monogram": "KR",
+      "art": "design",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "GitHub is a mirror of KDE development. Krita is an independent painting application, not a Photoshop decompilation.",
+      "reviewed": "2026-10-05",
+      "featured": true,
+      "hue": 260
+    },
+    {
+      "id": "blender",
+      "name": "Blender",
+      "repo": "https://github.com/blender/blender",
+      "kind": "tools",
+      "category": "3D & VFX",
+      "method": "Independent open-source tool",
+      "description": "Model, animate, simulate, and render in a complete open-source 3D creation suite.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C / C++",
+      "tags": [
+        "Creative"
+      ],
+      "monogram": "BL",
+      "art": "three",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Official GitHub mirror; primary development is on projects.blender.org. Blender is independently developed software.",
+      "reviewed": "2026-10-05",
+      "featured": true,
+      "hue": 273
+    },
+    {
+      "id": "freecad",
+      "name": "FreeCAD",
+      "repo": "https://github.com/FreeCAD/FreeCAD",
+      "kind": "tools",
+      "category": "CAD & engineering",
+      "method": "Independent open-source tool",
+      "description": "A parametric 3D modeler for mechanical design, engineering, and making things.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C++ / Python",
+      "tags": [
+        "Parametric design"
+      ],
+      "monogram": "FC",
+      "art": "cad",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "An independent CAD application. No compatibility or equivalence to a commercial CAD product is implied.",
+      "reviewed": "2026-10-05",
+      "featured": true,
+      "hue": 286
+    },
+    {
+      "id": "gimp",
+      "name": "GIMP",
+      "repo": "https://github.com/GNOME/gimp",
+      "kind": "tools",
+      "category": "Graphic design",
+      "method": "Independent open-source tool",
+      "description": "An open-source image editor for photo manipulation and creative composition.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C",
+      "tags": [
+        "Creative"
+      ],
+      "monogram": "GI",
+      "art": "design",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Read-only GitHub mirror; development is hosted on GNOME GitLab. This is independent software, not a proprietary app rewrite.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 299
+    },
+    {
+      "id": "inkscape",
+      "name": "Inkscape",
+      "repo": "https://github.com/inkscape/inkscape",
+      "kind": "tools",
+      "category": "Graphic design",
+      "method": "Independent open-source tool",
+      "description": "Draw scalable illustrations, typography, and graphics with a free vector editor.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C++",
+      "tags": [
+        "Vector graphics"
+      ],
+      "monogram": "INK",
+      "art": "design",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "This GitHub repository is the project's GitHub hub. The full source repository is hosted on GitLab and linked upstream.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 312
+    },
+    {
+      "id": "librecad",
+      "name": "LibreCAD",
+      "repo": "https://github.com/LibreCAD/LibreCAD",
+      "kind": "tools",
+      "category": "CAD & engineering",
+      "method": "Independent open-source tool",
+      "description": "A cross-platform 2D CAD application for drafting and technical drawings.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C++",
+      "tags": [
+        "2D drafting"
+      ],
+      "monogram": "LC",
+      "art": "cad",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Review upstream documentation for supported drawing formats; universal DWG compatibility is not asserted.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 325
+    },
+    {
+      "id": "qgis",
+      "name": "QGIS",
+      "repo": "https://github.com/qgis/QGIS",
+      "kind": "tools",
+      "category": "GIS & science",
+      "method": "Independent open-source tool",
+      "description": "Explore, edit, and analyze spatial data with an open-source geographic information system.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C++ / Python",
+      "tags": [
+        "Mapping"
+      ],
+      "monogram": "Q",
+      "art": "map",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Independent GIS software. File-format and provider support should be checked in the upstream documentation.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 338
+    },
+    {
+      "id": "kicad",
+      "name": "KiCad",
+      "repo": "https://github.com/KiCad/kicad-source-mirror",
+      "kind": "tools",
+      "category": "Electronics & PCB",
+      "method": "Independent open-source tool",
+      "description": "Design electronic schematics and printed circuit boards in an open EDA suite.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C++",
+      "tags": [
+        "PCB design"
+      ],
+      "monogram": "KC",
+      "art": "circuit",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Active GitHub source mirror. Primary development is on GitLab; GitHub pull requests are not the upstream contribution route.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 351
+    },
+    {
+      "id": "audacity",
+      "name": "Audacity",
+      "repo": "https://github.com/audacity/audacity",
+      "kind": "tools",
+      "category": "Audio & video",
+      "method": "Independent open-source tool",
+      "description": "Record, edit, and process audio with a familiar open-source editor.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C++",
+      "tags": [
+        "Audio editing"
+      ],
+      "monogram": "AU",
+      "art": "audio",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "An independently developed audio editor. See upstream licensing and platform requirements.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 364
+    },
+    {
+      "id": "ardour",
+      "name": "Ardour",
+      "repo": "https://github.com/Ardour/ardour",
+      "kind": "tools",
+      "category": "Audio & video",
+      "method": "Independent open-source tool",
+      "description": "A digital audio workstation for recording, editing, and mixing multitrack sessions.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C++",
+      "tags": [
+        "Audio editing"
+      ],
+      "monogram": "AR",
+      "art": "audio",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "GitHub source mirror. Source availability does not mean every upstream prebuilt binary is offered free of charge.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 377
+    },
+    {
+      "id": "obs",
+      "name": "OBS Studio",
+      "repo": "https://github.com/obsproject/obs-studio",
+      "kind": "tools",
+      "category": "Audio & video",
+      "method": "Independent open-source tool",
+      "description": "Capture your screen, compose scenes, and stream with open-source broadcasting software.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C / C++",
+      "tags": [
+        "Streaming"
+      ],
+      "monogram": "OBS",
+      "art": "video",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Independent recording and streaming software. Check upstream for hardware and operating-system requirements.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 390
+    },
+    {
+      "id": "kdenlive",
+      "name": "Kdenlive",
+      "repo": "https://github.com/KDE/kdenlive",
+      "kind": "tools",
+      "category": "Audio & video",
+      "method": "Independent open-source tool",
+      "description": "An open-source video editor for multitrack timelines and creative storytelling.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C++",
+      "tags": [
+        "Video editing"
+      ],
+      "monogram": "KD",
+      "art": "video",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "GitHub mirror of KDE development. Check upstream for current packages and contribution guidance.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 403
+    },
+    {
+      "id": "darktable",
+      "name": "darktable",
+      "repo": "https://github.com/darktable-org/darktable",
+      "kind": "tools",
+      "category": "Graphic design",
+      "method": "Independent open-source tool",
+      "description": "A photography workflow application and raw developer for digital negatives.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C",
+      "tags": [
+        "Photography"
+      ],
+      "monogram": "DT",
+      "art": "design",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Independent photography software. Supported cameras and raw formats are documented upstream.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 416
+    },
+    {
+      "id": "openshot",
+      "name": "OpenShot",
+      "repo": "https://github.com/OpenShot/openshot-qt",
+      "kind": "tools",
+      "category": "Audio & video",
+      "method": "Independent open-source tool",
+      "description": "Create and edit videos with an open-source timeline-based editor.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "Python",
+      "tags": [
+        "Video editing"
+      ],
+      "monogram": "OS",
+      "art": "video",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Independent video editing software. Consult upstream releases and setup rather than assuming a build was tested here.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 429
+    },
+    {
+      "id": "olive",
+      "name": "Olive",
+      "repo": "https://github.com/olive-editor/olive",
+      "kind": "tools",
+      "category": "Audio & video",
+      "method": "Independent open-source tool",
+      "description": "An experimental non-linear video editor exploring modern editing workflows.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C++",
+      "tags": [
+        "Experimental",
+        "Video editing"
+      ],
+      "monogram": "OL",
+      "art": "video",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream describes development-stage software. This listing does not promise production readiness.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 442
+    },
+    {
+      "id": "libreoffice",
+      "name": "LibreOffice",
+      "repo": "https://github.com/LibreOffice/core",
+      "kind": "tools",
+      "category": "Office & productivity",
+      "method": "Independent open-source tool",
+      "description": "An open-source office suite for documents, spreadsheets, and presentations.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C++",
+      "tags": [
+        "Productivity"
+      ],
+      "monogram": "LO",
+      "art": "office",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Read-only GitHub core mirror; development and contributions use LibreOffice infrastructure and Gerrit. Not an Excel decompilation.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 455
+    },
+    {
+      "id": "godot",
+      "name": "Godot Engine",
+      "repo": "https://github.com/godotengine/godot",
+      "kind": "tools",
+      "category": "Game engines",
+      "method": "Game engine",
+      "description": "Build 2D and 3D games with an open-source engine and integrated editor.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C++ / GDScript",
+      "tags": [
+        "Game development"
+      ],
+      "monogram": "GD",
+      "art": "three",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "An independently developed engine. Game assets and projects retain their own licenses.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 468
+    },
+    {
+      "id": "wine",
+      "name": "Wine",
+      "repo": "https://github.com/wine-mirror/wine",
+      "kind": "tools",
+      "category": "Compatibility",
+      "method": "Compatibility layer",
+      "description": "A Windows API compatibility layer for running Windows applications on Unix-like systems.",
+      "data_note": "Applications and their data are obtained separately under their own licenses.",
+      "language": "C",
+      "tags": [
+        "Compatibility"
+      ],
+      "monogram": "WN",
+      "art": "compat",
+      "platforms": [
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Official GitHub mirror. Requires separately obtained applications; compatibility varies. Wine does not include Windows software.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 481
+    },
+    {
+      "id": "dxvk",
+      "name": "DXVK",
+      "repo": "https://github.com/doitsujin/dxvk",
+      "kind": "tools",
+      "category": "Compatibility",
+      "method": "Compatibility layer",
+      "description": "Translate Direct3D 8, 9, 10, and 11 to Vulkan for Linux and Wine workflows.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C++",
+      "tags": [
+        "Compatibility"
+      ],
+      "monogram": "VK",
+      "art": "compat",
+      "platforms": [
+        "Linux"
+      ],
+      "source_note": "A graphics translation layer, not a game or universal compatibility guarantee. Check driver and Wine requirements upstream.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 494
+    },
+    {
+      "id": "ghidra",
+      "name": "Ghidra",
+      "repo": "https://github.com/NationalSecurityAgency/ghidra",
+      "kind": "tools",
+      "category": "Reverse engineering",
+      "method": "Reverse engineering tool",
+      "description": "Analyze executable code with an open-source software reverse-engineering framework.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "Java / C++",
+      "tags": [
+        "Code analysis"
+      ],
+      "monogram": "GH",
+      "art": "code",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Analysis software; Ghidra output alone is not a completed, compilable, or legally cleared game reconstruction.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 507
+    },
+    {
+      "id": "cutter",
+      "name": "Cutter",
+      "repo": "https://github.com/rizinorg/cutter",
+      "kind": "tools",
+      "category": "Reverse engineering",
+      "method": "Reverse engineering tool",
+      "description": "A graphical reverse-engineering platform powered by the Rizin framework.",
+      "data_note": "Use your own files and respect the upstream project's license. This directory distributes no tool binaries.",
+      "language": "C++",
+      "tags": [
+        "Code analysis"
+      ],
+      "monogram": "CT",
+      "art": "code",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "A tool for analysis of software you are authorized to inspect. This entry contains no analyzed game data.",
+      "reviewed": "2026-10-05",
+      "featured": false,
+      "hue": 520
+    }
+  ]
+}

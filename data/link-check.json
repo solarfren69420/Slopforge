@@ -1,0 +1,366 @@
+{
+  "checked_at": "2026-10-05T16:28:41.499382+00:00",
+  "scope": "Repository/README retrieval only. Not build, gameplay, legal, or claim verification.",
+  "records": [
+    {
+      "id": "openrct2",
+      "repo": "https://github.com/OpenRCT2/OpenRCT2",
+      "status": 200,
+      "final_url": "https://github.com/OpenRCT2/OpenRCT2",
+      "repository_sha256": "72a9d7060cd526c1f15c6bfa44ae2d61c0f4e4d9da215bd48582fb2a8767d1ed",
+      "readme_url": "https://raw.githubusercontent.com/OpenRCT2/OpenRCT2/HEAD/readme.md",
+      "readme_sha256": "07cead9cc35e45ed7f841a0363e42e387e5e0bdbd510fdbf14d238102c6da1df",
+      "result": "reachable"
+    },
+    {
+      "id": "devilutionx",
+      "repo": "https://github.com/diasurgical/DevilutionX",
+      "status": 200,
+      "final_url": "https://github.com/diasurgical/DevilutionX",
+      "repository_sha256": "76e369cd3339809dea10559c708738ffb0aac980b6e3063b9ab6035aa1d92cc1",
+      "readme_url": "https://raw.githubusercontent.com/diasurgical/DevilutionX/HEAD/README.md",
+      "readme_sha256": "a3135d7a639d65735a61adfeaefdb72218694a504a4ae86652da5a6015cd1aaf",
+      "result": "reachable"
+    },
+    {
+      "id": "openttd",
+      "repo": "https://github.com/OpenTTD/OpenTTD",
+      "status": 200,
+      "final_url": "https://github.com/OpenTTD/OpenTTD",
+      "repository_sha256": "de748f94506a0f204e3d2edc44c2d4bd8bd53f8ffe6772a8a9d6c112078bc486",
+      "readme_url": "https://raw.githubusercontent.com/OpenTTD/OpenTTD/HEAD/README.md",
+      "readme_sha256": "1d3ef552927e7e52239eab89c2b213fffd3c006f008bacfd13187018a534dd86",
+      "result": "reachable"
+    },
+    {
+      "id": "openmw",
+      "repo": "https://github.com/OpenMW/openmw",
+      "status": 200,
+      "final_url": "https://github.com/OpenMW/openmw",
+      "repository_sha256": "89eeac1a1d93709e0269c537aecdbb53b6ae97b5c3b44819714c95f32a279bdf",
+      "readme_url": "https://raw.githubusercontent.com/OpenMW/openmw/HEAD/README.md",
+      "readme_sha256": "3b5fc6fc6f28681872098faf61c3d660f200da094975cc8ad3636a5b3f493537",
+      "result": "reachable"
+    },
+    {
+      "id": "scummvm",
+      "repo": "https://github.com/scummvm/scummvm",
+      "status": 200,
+      "final_url": "https://github.com/scummvm/scummvm",
+      "repository_sha256": "84e83e0b7007db11d1bb69d93c6eae405bb6ef81ee35d78a2f8ef854fc11ef6b",
+      "readme_url": "https://raw.githubusercontent.com/scummvm/scummvm/HEAD/README.md",
+      "readme_sha256": "94b871636b05ea0b4b7e77b2ef8d090d191df795b13459166f83e33247914a14",
+      "result": "reachable"
+    },
+    {
+      "id": "force-engine",
+      "repo": "https://github.com/TheForceEngine/TheForceEngine",
+      "status": 200,
+      "final_url": "https://github.com/TheForceEngine/TheForceEngine",
+      "repository_sha256": "7ba810164796539c41792ccd36ce2150102e06e7d441c029caa60ef5cb9e3ffc",
+      "readme_url": "https://raw.githubusercontent.com/TheForceEngine/TheForceEngine/HEAD/README.md",
+      "readme_sha256": "48e33f488f6f69a57620a4e245e7d9b0fb2dc355fa24a6e161bd49c6309ecb85",
+      "result": "reachable"
+    },
+    {
+      "id": "gzdoom",
+      "repo": "https://github.com/ZDoom/gzdoom",
+      "status": 200,
+      "final_url": "https://github.com/ZDoom/gzdoom",
+      "repository_sha256": "31dedf0448bf821b0ee81017ea9631493fe5362f2058049aa87c9985e2b7a572",
+      "readme_url": "https://raw.githubusercontent.com/ZDoom/gzdoom/HEAD/README.md",
+      "readme_sha256": "4f1233448d333369778283028e691ed5e1cdb3235f6dabb44f6f230a812d5e3c",
+      "result": "reachable"
+    },
+    {
+      "id": "corsixth",
+      "repo": "https://github.com/CorsixTH/CorsixTH",
+      "status": 200,
+      "final_url": "https://github.com/CorsixTH/CorsixTH",
+      "repository_sha256": "7947b4bd9f2cd2e416b601af9868d1d4bda840d4498479fa9e47749428202ba6",
+      "readme_url": "https://raw.githubusercontent.com/CorsixTH/CorsixTH/HEAD/README.md",
+      "readme_sha256": "b2686b64b705196d085a9e3f3e2f92e3d920db1f5e2e1603774f59ede8a018f6",
+      "result": "reachable"
+    },
+    {
+      "id": "fallout2-ce",
+      "repo": "https://github.com/alexbatalov/fallout2-ce",
+      "status": 200,
+      "final_url": "https://github.com/alexbatalov/fallout2-ce",
+      "repository_sha256": "c3a382797c71cd1e73c8eae7b7f3e8757747e5070d043cf77da1823e44da7728",
+      "readme_url": "https://raw.githubusercontent.com/alexbatalov/fallout2-ce/HEAD/README.md",
+      "readme_sha256": "ba8c022f9a50131d1aa833c358c6e5c6e581cd0c5b2d73eaa8d08156c1da62b7",
+      "result": "reachable"
+    },
+    {
+      "id": "openra",
+      "repo": "https://github.com/OpenRA/OpenRA",
+      "status": 200,
+      "final_url": "https://github.com/OpenRA/OpenRA",
+      "repository_sha256": "9647e41b5967c8021699145aca94f4ce6d59ecf0424d3a2c483ec6e38ff9e0b5",
+      "readme_url": "https://raw.githubusercontent.com/OpenRA/OpenRA/HEAD/README.md",
+      "readme_sha256": "1bec5138e3033212ed382167a655e80cffbed9cba35cb8d84e962ecca2da3c2a",
+      "result": "reachable"
+    },
+    {
+      "id": "supertuxkart",
+      "repo": "https://github.com/supertuxkart/stk-code",
+      "status": 200,
+      "final_url": "https://github.com/supertuxkart/stk-code",
+      "repository_sha256": "44f2792ac776b2eb18f1cf5a409fc4833a6592a16a479426c16b3de56263b333",
+      "readme_url": "https://raw.githubusercontent.com/supertuxkart/stk-code/HEAD/README.md",
+      "readme_sha256": "94b14f9f8cf52a59195564fec22784d3f506a892df0c87220bf866765ef59b86",
+      "result": "reachable"
+    },
+    {
+      "id": "supertux",
+      "repo": "https://github.com/SuperTux/supertux",
+      "status": 200,
+      "final_url": "https://github.com/SuperTux/supertux",
+      "repository_sha256": "1fd034d691f9772c215f7b5be764fef9b757a18eed499244777e8b32b2e609d0",
+      "readme_url": "https://raw.githubusercontent.com/SuperTux/supertux/HEAD/README.md",
+      "readme_sha256": "273cc2f062930f9e5b2fe0b16d9e99ae737969af4727764b4ae62f6819aaec91",
+      "result": "reachable"
+    },
+    {
+      "id": "luanti",
+      "repo": "https://github.com/luanti-org/luanti",
+      "status": 200,
+      "final_url": "https://github.com/luanti-org/luanti",
+      "repository_sha256": "46e32aae78e7195cf02fd4cbbd032a7e761f74cb562827f6474acb9cb5152c59",
+      "readme_url": "https://raw.githubusercontent.com/luanti-org/luanti/HEAD/README.md",
+      "readme_sha256": "c2b3cf8420dfbc076003fb0ec34ac5298466fec9046ede17cf9ae32b951708ab",
+      "result": "reachable"
+    },
+    {
+      "id": "wesnoth",
+      "repo": "https://github.com/wesnoth/wesnoth",
+      "status": 200,
+      "final_url": "https://github.com/wesnoth/wesnoth",
+      "repository_sha256": "ae37027f7be304b0fb80f2599751954184134a1388e295d53a9b6b698a316b5d",
+      "readme_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/HEAD/README.md",
+      "readme_sha256": "37539c6ba20f53e714237a530aa427898a1334cfa20fae2b0e7ccd6325388d50",
+      "result": "reachable"
+    },
+    {
+      "id": "openage",
+      "repo": "https://github.com/SFTtech/openage",
+      "status": 200,
+      "final_url": "https://github.com/SFTtech/openage",
+      "repository_sha256": "cb57305d533363f3b1c97094a0923570094e7fb4936061ed59153a0939cd2d4e",
+      "readme_url": "https://raw.githubusercontent.com/SFTtech/openage/HEAD/README.md",
+      "readme_sha256": "30d0375a837c3f8fb2abe940b1d6740a0604b4002400f7e7b619e269786ff27b",
+      "result": "reachable"
+    },
+    {
+      "id": "krita",
+      "repo": "https://github.com/KDE/krita",
+      "status": 200,
+      "final_url": "https://github.com/KDE/krita",
+      "repository_sha256": "a7a0147aafdb7fea4acd4a20cebb710b1aee7c5238bed0c3518ea5ab20e77143",
+      "readme_url": "https://raw.githubusercontent.com/KDE/krita/HEAD/README.md",
+      "readme_sha256": "e979bfec6ac7f27ca32c023e7f9908c84248190e957bd4aea72272091857cc94",
+      "result": "reachable"
+    },
+    {
+      "id": "blender",
+      "repo": "https://github.com/blender/blender",
+      "status": 200,
+      "final_url": "https://github.com/blender/blender",
+      "repository_sha256": "f91e9b59935d925292a4221cc5c7f19662a5e37db58a7a7d1130acb3e691bebc",
+      "readme_url": "https://raw.githubusercontent.com/blender/blender/HEAD/README.md",
+      "readme_sha256": "1bbb333e5196ba3d5cdc42830e5f1db6b77c311da96d4ff4d9a6f8143d9821e1",
+      "result": "reachable"
+    },
+    {
+      "id": "freecad",
+      "repo": "https://github.com/FreeCAD/FreeCAD",
+      "status": 200,
+      "final_url": "https://github.com/FreeCAD/FreeCAD",
+      "repository_sha256": "a3863ef963f968cbaad336f7e7301e2849077ead20f1c6919d958bbd68d9648e",
+      "readme_url": "https://raw.githubusercontent.com/FreeCAD/FreeCAD/HEAD/README.md",
+      "readme_sha256": "2de839c26b7343be697550809a5834ea1177edbd1490dd0dec302ec9b8b42372",
+      "result": "reachable"
+    },
+    {
+      "id": "gimp",
+      "repo": "https://github.com/GNOME/gimp",
+      "status": 200,
+      "final_url": "https://github.com/GNOME/gimp",
+      "repository_sha256": "b7924f2d936366dc8d403cf458c648a7912845af78d5c257b0e80cc760e40444",
+      "readme_url": "https://raw.githubusercontent.com/GNOME/gimp/HEAD/README",
+      "readme_sha256": "189798548cf99be5878f0caaf2341a5d6383eecdc19a1c69dcc1490a1e35ba51",
+      "result": "reachable"
+    },
+    {
+      "id": "inkscape",
+      "repo": "https://github.com/inkscape/inkscape",
+      "status": 200,
+      "final_url": "https://github.com/inkscape/inkscape",
+      "repository_sha256": "3e6e57df5f9e2ffa2035716ddf55aae1700fa3090f07d7ec8051cb21f2ee6efe",
+      "readme_url": "https://raw.githubusercontent.com/inkscape/inkscape/HEAD/README.md",
+      "readme_sha256": "47cfdf57931603431f1f94f54a0c03fac140dafb4c5aeb5ee618e4422fe417fc",
+      "result": "reachable"
+    },
+    {
+      "id": "librecad",
+      "repo": "https://github.com/LibreCAD/LibreCAD",
+      "status": 200,
+      "final_url": "https://github.com/LibreCAD/LibreCAD",
+      "repository_sha256": "4e7b35cb7a2e35a7584e4e4597a41924f17998c7cd236484adaa4e3fa9052ea5",
+      "readme_url": "https://raw.githubusercontent.com/LibreCAD/LibreCAD/HEAD/README.md",
+      "readme_sha256": "7665a24bad455fd64a18987c9e3ecb1ee119bfe177efb3734be1447b3d49eebe",
+      "result": "reachable"
+    },
+    {
+      "id": "qgis",
+      "repo": "https://github.com/qgis/QGIS",
+      "status": 200,
+      "final_url": "https://github.com/qgis/QGIS",
+      "repository_sha256": "ba792fbf08ade9e865207d7d7d375b42c5131357dc15b03346af433ea2619bac",
+      "readme_url": "https://raw.githubusercontent.com/qgis/QGIS/HEAD/README.md",
+      "readme_sha256": "8ef9dcac16c5892e10554e8bf7f87327330d2b24639f891ce110a2b1010c63e4",
+      "result": "reachable"
+    },
+    {
+      "id": "kicad",
+      "repo": "https://github.com/KiCad/kicad-source-mirror",
+      "status": 200,
+      "final_url": "https://github.com/KiCad/kicad-source-mirror",
+      "repository_sha256": "f23af145e0efedec3e23209ac9b8438560d66e68ab6d71a90345c5629eaca3ac",
+      "readme_url": "https://raw.githubusercontent.com/KiCad/kicad-source-mirror/HEAD/README.md",
+      "readme_sha256": "c9c47f08b3b4a5cef704b548fb7300dca85f3c689dd3147fab4cb886e957fd87",
+      "result": "reachable"
+    },
+    {
+      "id": "audacity",
+      "repo": "https://github.com/audacity/audacity",
+      "status": 200,
+      "final_url": "https://github.com/audacity/audacity",
+      "repository_sha256": "394cdee751e7b759faa59be6cb3f53dca31ce309ed96cc003d92dbbfec67f2e8",
+      "readme_url": "https://raw.githubusercontent.com/audacity/audacity/HEAD/README.md",
+      "readme_sha256": "c84ab5991133706a2899c20539df624ecaa124b7be9d4aff6d2b20986978d121",
+      "result": "reachable"
+    },
+    {
+      "id": "ardour",
+      "repo": "https://github.com/Ardour/ardour",
+      "status": 200,
+      "final_url": "https://github.com/Ardour/ardour",
+      "repository_sha256": "a1a158f740cf206e504c98d1b87600bb384105f4639efdba8e00893dcccc7ba4",
+      "readme_url": "https://raw.githubusercontent.com/Ardour/ardour/HEAD/README",
+      "readme_sha256": "eee6b9c7fe04c72bc81e0f59ee0a20bdcd45dd7007517ad732b66a97d495b353",
+      "result": "reachable"
+    },
+    {
+      "id": "obs",
+      "repo": "https://github.com/obsproject/obs-studio",
+      "status": 200,
+      "final_url": "https://github.com/obsproject/obs-studio",
+      "repository_sha256": "ad207e5fb5c725d1aa7e0cdd077bf74eeaeb1207d6c75d1abe4165461f6bf1dc",
+      "readme_url": "https://raw.githubusercontent.com/obsproject/obs-studio/HEAD/README.rst",
+      "readme_sha256": "be2dff0124620dcd9d8d83ef9084b12d1e61e896d3295232501cb3ebd3f6a318",
+      "result": "reachable"
+    },
+    {
+      "id": "kdenlive",
+      "repo": "https://github.com/KDE/kdenlive",
+      "status": 200,
+      "final_url": "https://github.com/KDE/kdenlive",
+      "repository_sha256": "169e10d5654c2d8156c0cd3341e3097c14a40560ac03e33ef367e283f063d1d5",
+      "readme_url": "https://raw.githubusercontent.com/KDE/kdenlive/HEAD/README.md",
+      "readme_sha256": "86f55bc195dc5ff81d82f52d1c4b10a17c411e6fc43a629be0c2a74708084f36",
+      "result": "reachable"
+    },
+    {
+      "id": "darktable",
+      "repo": "https://github.com/darktable-org/darktable",
+      "status": 200,
+      "final_url": "https://github.com/darktable-org/darktable",
+      "repository_sha256": "a959795fb2ac3022fa0a8fc97c780e651cb317a2e7a2ad816b8502ac0051daa8",
+      "readme_url": "https://raw.githubusercontent.com/darktable-org/darktable/HEAD/README.md",
+      "readme_sha256": "c6adde89bcedc71d897eac970ed7122716df289c75e7423d81005f8600c414be",
+      "result": "reachable"
+    },
+    {
+      "id": "openshot",
+      "repo": "https://github.com/OpenShot/openshot-qt",
+      "status": 200,
+      "final_url": "https://github.com/OpenShot/openshot-qt",
+      "repository_sha256": "bfe9e166b38443454e2ebf15ef6ff83bbea40b9858eab3809261bc6ec58cdf67",
+      "readme_url": "https://raw.githubusercontent.com/OpenShot/openshot-qt/HEAD/README.md",
+      "readme_sha256": "007fa904476da233e2df182677908c1378fb76e44dc20c748a7ff8e6c170ba8a",
+      "result": "reachable"
+    },
+    {
+      "id": "olive",
+      "repo": "https://github.com/olive-editor/olive",
+      "status": 200,
+      "final_url": "https://github.com/olive-editor/olive",
+      "repository_sha256": "cf01e0a37dafd647f7eae752abf7e3a7ec2839bf568e3baa2af23a8e8c496a2f",
+      "readme_url": "https://raw.githubusercontent.com/olive-editor/olive/HEAD/README.md",
+      "readme_sha256": "c442e0ba47badcd822b9ad2d7bd0123189eee3778c0393de1122a9333dfa078f",
+      "result": "reachable"
+    },
+    {
+      "id": "libreoffice",
+      "repo": "https://github.com/LibreOffice/core",
+      "status": 200,
+      "final_url": "https://github.com/LibreOffice/core",
+      "repository_sha256": "f6237335d8e0008e86cb0cf2b55489ef83eb927cf6e606b6886af9fc989926ab",
+      "readme_url": "https://raw.githubusercontent.com/LibreOffice/core/HEAD/README.md",
+      "readme_sha256": "eff8891d8410465ea388d655502a74c90d13cec61cd8301c5fbd61241790f657",
+      "result": "reachable"
+    },
+    {
+      "id": "godot",
+      "repo": "https://github.com/godotengine/godot",
+      "status": 200,
+      "final_url": "https://github.com/godotengine/godot",
+      "repository_sha256": "4dd6bcea978af14574880f2bdb11ecce3bb8dbb392fc5819ef4f93dab9bbba67",
+      "readme_url": "https://raw.githubusercontent.com/godotengine/godot/HEAD/README.md",
+      "readme_sha256": "999955511e1d54b0abe323ad899633a5a22c14c4899d46e31d06de2175bd19f0",
+      "result": "reachable"
+    },
+    {
+      "id": "wine",
+      "repo": "https://github.com/wine-mirror/wine",
+      "status": 200,
+      "final_url": "https://github.com/wine-mirror/wine",
+      "repository_sha256": "bb9311bb8456b7d4b53a6cc1572269bbfc1f6b18236ea2a1ccc4fcb5575d9928",
+      "readme_url": "https://raw.githubusercontent.com/wine-mirror/wine/HEAD/README.md",
+      "readme_sha256": "794d12d0a6c70e13f5430f7f159aeb3802465b45075ecaa77276f839773c4088",
+      "result": "reachable"
+    },
+    {
+      "id": "dxvk",
+      "repo": "https://github.com/doitsujin/dxvk",
+      "status": 200,
+      "final_url": "https://github.com/doitsujin/dxvk",
+      "repository_sha256": "b20f28b63e42e00088a825bc554077fa051ae197d6e268b4b79af0047cca03c9",
+      "readme_url": "https://raw.githubusercontent.com/doitsujin/dxvk/HEAD/README.md",
+      "readme_sha256": "cddb299b327467c04f9d6f70e12be5b0db87c605a1d6a6cc705ffa7a1d871c6e",
+      "result": "reachable"
+    },
+    {
+      "id": "ghidra",
+      "repo": "https://github.com/NationalSecurityAgency/ghidra",
+      "status": 200,
+      "final_url": "https://github.com/NationalSecurityAgency/ghidra",
+      "repository_sha256": "af5531253cff1889e768515e9c423bda054315f9a117d4620602c9e669db8c64",
+      "readme_url": "https://raw.githubusercontent.com/NationalSecurityAgency/ghidra/HEAD/README.md",
+      "readme_sha256": "bc211b0cd68a0a586a07b1cccea28aec99c8aa695d888405fd7ffa4533807a35",
+      "result": "reachable"
+    },
+    {
+      "id": "cutter",
+      "repo": "https://github.com/rizinorg/cutter",
+      "status": 200,
+      "final_url": "https://github.com/rizinorg/cutter",
+      "repository_sha256": "1817c584241172f26b2cedf57c0021cc58b84ac79d8edb8e606fc98927618cd8",
+      "readme_url": "https://raw.githubusercontent.com/rizinorg/cutter/HEAD/README.md",
+      "readme_sha256": "c8c8b1e5c4e1970bbc6d56232b9b408d64952926078ecda5e5135973ef31530f",
+      "result": "reachable"
+    }
+  ]
+}
