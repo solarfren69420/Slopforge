@@ -1,0 +1,454 @@
+{
+  "reviewed": "2026-10-07",
+  "scope": "Public repository inventory, commit-pinned README/license review, and development qualifications. No upstream build, feature-parity measurement, clean-room audit, or legal certification.",
+  "inventory_count": 41,
+  "listed_count": 13,
+  "records": {
+    "artcraft": {
+      "repository": "https://github.com/storytold/artcraft",
+      "commit": "3e5793b6934b51536606720e5d56bcfd1fe7cc2d",
+      "readme_url": "https://raw.githubusercontent.com/storytold/artcraft/3e5793b6934b51536606720e5d56bcfd1fe7cc2d/README.md",
+      "readme_sha256": "77bfd66aa78e0c97ab0dc71ac3d19207d823fc34eb202694cb8d160660565a4b",
+      "additional_sources": [
+        {
+          "url": "https://raw.githubusercontent.com/storytold/artcraft/3e5793b6934b51536606720e5d56bcfd1fe7cc2d/LICENSE.md",
+          "sha256": "b93dc266c23c84f61d40e1b02db8899bd58d6c9e4e3b152c5d128e973325990e",
+          "file": "LICENSE.md"
+        }
+      ]
+    },
+    "photocraft": {
+      "repository": "https://github.com/storytold/photocraft",
+      "commit": "47f9306fd06d5dee11acb84b108606f4c867222a",
+      "readme_url": "https://raw.githubusercontent.com/storytold/photocraft/47f9306fd06d5dee11acb84b108606f4c867222a/README.md",
+      "readme_sha256": "0eae2a71bfe971a2e8c25e9c4e4a7e4bc56ecdebc1e479625877fd2b9a9d128a",
+      "additional_sources": [
+        {
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/47f9306fd06d5dee11acb84b108606f4c867222a/LICENSE-MIT",
+          "sha256": "1a8f66d8a86b146f5336fa0d4b1186576c8aa98e60823080c85c7811cfd810af",
+          "file": "LICENSE-MIT"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/47f9306fd06d5dee11acb84b108606f4c867222a/LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "file": "LICENSE-APACHE"
+        }
+      ]
+    },
+    "lightcraft": {
+      "repository": "https://github.com/storytold/lightcraft",
+      "commit": "b35487add2e8169c18e36dff3a9815501c901d69",
+      "readme_url": "https://raw.githubusercontent.com/storytold/lightcraft/b35487add2e8169c18e36dff3a9815501c901d69/README.md",
+      "readme_sha256": "a12ccee923496f94f1006615f5ff2ee920f4c4ba243a363471bd8d11c70fefcd",
+      "additional_sources": [
+        {
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/b35487add2e8169c18e36dff3a9815501c901d69/LICENSE-MIT",
+          "sha256": "1470a5d44a88a9d385d9530763ea411ca199670d07f561a61d54256323972b92",
+          "file": "LICENSE-MIT"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/b35487add2e8169c18e36dff3a9815501c901d69/LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "file": "LICENSE-APACHE"
+        }
+      ]
+    },
+    "filmcraft": {
+      "repository": "https://github.com/storytold/filmcraft",
+      "commit": "5695626216c24cf1871b6cef00431ae56ef152ff",
+      "readme_url": "https://raw.githubusercontent.com/storytold/filmcraft/5695626216c24cf1871b6cef00431ae56ef152ff/README.md",
+      "readme_sha256": "bd78ee7a4dbfafa73209239cff0b93f1650d8c1897856fb25bf2139633aa5e25",
+      "additional_sources": [
+        {
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/5695626216c24cf1871b6cef00431ae56ef152ff/LICENSE-MIT",
+          "sha256": "d2d8416f0883694c23b473e26372506e9e11f5f41b55a92b7388dab921d9a207",
+          "file": "LICENSE-MIT"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/5695626216c24cf1871b6cef00431ae56ef152ff/LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "file": "LICENSE-APACHE"
+        }
+      ]
+    },
+    "vectorcraft": {
+      "repository": "https://github.com/storytold/vectorcraft",
+      "commit": "b64dcc02df4c656255142c0b611711d2717314db",
+      "readme_url": "https://raw.githubusercontent.com/storytold/vectorcraft/b64dcc02df4c656255142c0b611711d2717314db/README.md",
+      "readme_sha256": "bc0c2cf5fd2581a39e742c4a70c4d3f4938786978536227d50c23b34184e3f97",
+      "additional_sources": [
+        {
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/b64dcc02df4c656255142c0b611711d2717314db/LICENSE-MIT",
+          "sha256": "8b6025dc4b707e0fb08b9c2054096f1be3ae61529399aa2c348dec676562dc71",
+          "file": "LICENSE-MIT"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/b64dcc02df4c656255142c0b611711d2717314db/LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "file": "LICENSE-APACHE"
+        }
+      ]
+    },
+    "effectcraft": {
+      "repository": "https://github.com/storytold/effectcraft",
+      "commit": "608d1b077b65bb7591f26be587a2a5a47f4278bc",
+      "readme_url": "https://raw.githubusercontent.com/storytold/effectcraft/608d1b077b65bb7591f26be587a2a5a47f4278bc/README.md",
+      "readme_sha256": "73558431bde8ac187acdbe36525191ba10f3e4faf38bb59fea508409d099732e",
+      "additional_sources": [
+        {
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/608d1b077b65bb7591f26be587a2a5a47f4278bc/LICENSE-MIT",
+          "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe",
+          "file": "LICENSE-MIT"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/608d1b077b65bb7591f26be587a2a5a47f4278bc/LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "file": "LICENSE-APACHE"
+        }
+      ]
+    },
+    "designcraft": {
+      "repository": "https://github.com/storytold/designcraft",
+      "commit": "d582277cc79c4bc9cee174b25b13fb11e6957aa5",
+      "readme_url": "https://raw.githubusercontent.com/storytold/designcraft/d582277cc79c4bc9cee174b25b13fb11e6957aa5/README.md",
+      "readme_sha256": "31eb5b37d0d644c07caf77d53ac02fc2041aead0b9e1f2011a568719e90da1c0",
+      "additional_sources": [
+        {
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/d582277cc79c4bc9cee174b25b13fb11e6957aa5/LICENSE-MIT",
+          "sha256": "d543d31e3120c64b70abc77cfadcbdc2249c78de1c8efa2e3d62540bb79de816",
+          "file": "LICENSE-MIT"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/d582277cc79c4bc9cee174b25b13fb11e6957aa5/LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "file": "LICENSE-APACHE"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/d582277cc79c4bc9cee174b25b13fb11e6957aa5/ROADMAP.md",
+          "sha256": "c5954545fa9487e898f32cc458c19c1b949f3c3f501c07908cf4c2c4a1ba2363",
+          "file": "ROADMAP.md"
+        }
+      ]
+    },
+    "printcraft": {
+      "repository": "https://github.com/storytold/printcraft",
+      "commit": "1c78ff479ce5cf5cbcf7af5100378c9311b95162",
+      "readme_url": "https://raw.githubusercontent.com/storytold/printcraft/1c78ff479ce5cf5cbcf7af5100378c9311b95162/README.md",
+      "readme_sha256": "483b22c0e45c3618b56f25e9372172866ba45905aa9f3213b77c1cf7debdfdaa",
+      "additional_sources": [
+        {
+          "url": "https://raw.githubusercontent.com/storytold/printcraft/1c78ff479ce5cf5cbcf7af5100378c9311b95162/LICENSE-MIT",
+          "sha256": "69ac7c5f9764178bcb794b53cb708062e789f5fe61275c7f348fd0c8688babd2",
+          "file": "LICENSE-MIT"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/storytold/printcraft/1c78ff479ce5cf5cbcf7af5100378c9311b95162/LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "file": "LICENSE-APACHE"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/storytold/printcraft/1c78ff479ce5cf5cbcf7af5100378c9311b95162/ROADMAP.md",
+          "sha256": "9267797fc7f8dafa22be8af911327f51ed382f14b11740c5f9c48ab501cc413e",
+          "file": "ROADMAP.md"
+        }
+      ]
+    },
+    "cadcraft": {
+      "repository": "https://github.com/storytold/cadcraft",
+      "commit": "7d4ca2830d4516656799a3a32a6ab03093759140",
+      "readme_url": "https://raw.githubusercontent.com/storytold/cadcraft/7d4ca2830d4516656799a3a32a6ab03093759140/README.md",
+      "readme_sha256": "6a2c3dc5ee3c921c58f340ac196b1066aa4b9f2e5f0959cde444d4e468a3e20c",
+      "additional_sources": [
+        {
+          "url": "https://raw.githubusercontent.com/storytold/cadcraft/7d4ca2830d4516656799a3a32a6ab03093759140/LICENSE-MIT",
+          "sha256": "54b0fc87ed7b61b59c20340070dd2b8c7f9d0b53795347819c3bd7c67ea2508a",
+          "file": "LICENSE-MIT"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/storytold/cadcraft/7d4ca2830d4516656799a3a32a6ab03093759140/LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "file": "LICENSE-APACHE"
+        }
+      ]
+    },
+    "wordcraft": {
+      "repository": "https://github.com/storytold/wordcraft",
+      "commit": "c9824abfc20619ccc9dd876cfa1cc9ceb7c4dca4",
+      "readme_url": "https://raw.githubusercontent.com/storytold/wordcraft/c9824abfc20619ccc9dd876cfa1cc9ceb7c4dca4/README.md",
+      "readme_sha256": "2e0780a179321db6a1d460ab9f76effe232c1deca93369e453375d3a2c6ba7a6",
+      "additional_sources": [
+        {
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/c9824abfc20619ccc9dd876cfa1cc9ceb7c4dca4/LICENSE-MIT",
+          "sha256": "fc257de83c44ae49e4aad1cf777b886794be3ac9c8d00c010ef55935d5bbeba5",
+          "file": "LICENSE-MIT"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/c9824abfc20619ccc9dd876cfa1cc9ceb7c4dca4/LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "file": "LICENSE-APACHE"
+        }
+      ]
+    },
+    "gridcraft": {
+      "repository": "https://github.com/storytold/gridcraft",
+      "commit": "efbcb01b7747a409459c7788826118856b3bc9c8",
+      "readme_url": "https://raw.githubusercontent.com/storytold/gridcraft/efbcb01b7747a409459c7788826118856b3bc9c8/README.md",
+      "readme_sha256": "75113ccc0382908472c74d5a0f07942d197affebba2b13fca955aeade8149d12",
+      "additional_sources": [
+        {
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/efbcb01b7747a409459c7788826118856b3bc9c8/LICENSE-MIT",
+          "sha256": "a87109bbb1ad43ca3920a5d7ff3806863b7e8470a73f4ded97a1447ac93333f5",
+          "file": "LICENSE-MIT"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/efbcb01b7747a409459c7788826118856b3bc9c8/LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "file": "LICENSE-APACHE"
+        }
+      ]
+    },
+    "soundcraft": {
+      "repository": "https://github.com/storytold/soundcraft",
+      "commit": "876b098a2088d2a130aa3e655da2d95d1cb79c3b",
+      "readme_url": "https://raw.githubusercontent.com/storytold/soundcraft/876b098a2088d2a130aa3e655da2d95d1cb79c3b/README.md",
+      "readme_sha256": "6748c34c1203b859c136d2fd8f1da52690f5d1b4ec27f6bbbd1669b89412eda5",
+      "additional_sources": [
+        {
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/876b098a2088d2a130aa3e655da2d95d1cb79c3b/LICENSE-MIT",
+          "sha256": "6aff3a3f0d8eb4c2d4fca151a00cdf26d8ff3020889402a453381a12dba3381e",
+          "file": "LICENSE-MIT"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/876b098a2088d2a130aa3e655da2d95d1cb79c3b/LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "file": "LICENSE-APACHE"
+        }
+      ]
+    },
+    "deckcraft": {
+      "repository": "https://github.com/storytold/deckcraft",
+      "commit": "942a2c80cc5110f9c8640ffe1925600182ae2284",
+      "readme_url": "https://raw.githubusercontent.com/storytold/deckcraft/942a2c80cc5110f9c8640ffe1925600182ae2284/README.md",
+      "readme_sha256": "fdc36046c176307b64f0286eb1b19e25364dc7452848fc964dccb1678321ad74",
+      "additional_sources": [
+        {
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/942a2c80cc5110f9c8640ffe1925600182ae2284/LICENSE-MIT",
+          "sha256": "90e96fef569474cd526350e716e4b05dd32f179ca96d39d61e6b928485e35406",
+          "file": "LICENSE-MIT"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/942a2c80cc5110f9c8640ffe1925600182ae2284/LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "file": "LICENSE-APACHE"
+        }
+      ]
+    }
+  },
+  "inventory_decisions": [
+    {
+      "repo": "https://github.com/storytold/ActorSpawningPlugin",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/artcraft",
+      "listed": true,
+      "note": "Application reviewed and listed with scope notes."
+    },
+    {
+      "repo": "https://github.com/storytold/artcraft-services",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/artcraftx",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/Azure-Kinect-Sample-for-Unity",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/bevy-mocap",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/cadcraft",
+      "listed": true,
+      "note": "Application reviewed and listed with scope notes."
+    },
+    {
+      "repo": "https://github.com/storytold/cloud-worker",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/craft-fonts",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/deckcraft",
+      "listed": true,
+      "note": "Application reviewed and listed with scope notes."
+    },
+    {
+      "repo": "https://github.com/storytold/designcraft",
+      "listed": true,
+      "note": "Application reviewed and listed with scope notes."
+    },
+    {
+      "repo": "https://github.com/storytold/effectcraft",
+      "listed": true,
+      "note": "Application reviewed and listed with scope notes."
+    },
+    {
+      "repo": "https://github.com/storytold/EventCenterPlugin",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/filmcraft",
+      "listed": true,
+      "note": "Application reviewed and listed with scope notes."
+    },
+    {
+      "repo": "https://github.com/storytold/FineTrainers-Conditioning",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/github-media",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/gridcraft",
+      "listed": true,
+      "note": "Application reviewed and listed with scope notes."
+    },
+    {
+      "repo": "https://github.com/storytold/html_test",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/irsa-manager",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/k4a-sys-temp",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/lightcraft",
+      "listed": true,
+      "note": "Application reviewed and listed with scope notes."
+    },
+    {
+      "repo": "https://github.com/storytold/LiveScan3D",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/photocraft",
+      "listed": true,
+      "note": "Application reviewed and listed with scope notes."
+    },
+    {
+      "repo": "https://github.com/storytold/photocraft-corpus",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/placeholder-artcraft",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/point-generator",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/printcraft",
+      "listed": true,
+      "note": "Application reviewed and listed with scope notes."
+    },
+    {
+      "repo": "https://github.com/storytold/realtime-voice-conversion",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/RuntimeAudioImporter",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/RuntimeFilesDownloader",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/soundcraft",
+      "listed": true,
+      "note": "Application reviewed and listed with scope notes."
+    },
+    {
+      "repo": "https://github.com/storytold/spark",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/storyteller-bevy",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/storyteller-ml",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/terraform-aws-observability-accelerator",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/UE4-OSC",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/UnrealZeroMQ",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/vectorcraft",
+      "listed": true,
+      "note": "Application reviewed and listed with scope notes."
+    },
+    {
+      "repo": "https://github.com/storytold/vits-finetuning",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    },
+    {
+      "repo": "https://github.com/storytold/wordcraft",
+      "listed": true,
+      "note": "Application reviewed and listed with scope notes."
+    },
+    {
+      "repo": "https://github.com/storytold/xsens-packet-send",
+      "listed": false,
+      "note": "Supporting infrastructure, test/media data, library, fork, archive, or unclassified prototype; outside this application addition."
+    }
+  ]
+}

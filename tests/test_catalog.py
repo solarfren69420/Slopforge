@@ -37,6 +37,16 @@ class CatalogTests(unittest.TestCase):
         self.catalog['projects'][0]['completion']=100
         with self.assertRaises(AssertionError):validate(self.catalog)
 
+    def test_rewrite_without_evidence_is_rejected(self):
+        project=next(p for p in self.catalog['projects'] if p['method']=='Clean-room rewrite')
+        project['source_urls']=[]
+        with self.assertRaises(AssertionError):validate(self.catalog)
+
+    def test_unsafe_evidence_host_is_rejected(self):
+        project=next(p for p in self.catalog['projects'] if p.get('source_urls'))
+        project['source_urls'][0]['url']='https://raw.githubusercontent.com.evil.example/README.md'
+        with self.assertRaises(AssertionError):validate(self.catalog)
+
     def test_generated_catalog_preserves_every_source(self):
         text=markdown(self.catalog['projects'])
         for p in self.catalog['projects']:self.assertIn(']('+p['repo']+')',text)

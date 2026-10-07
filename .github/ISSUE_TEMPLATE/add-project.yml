@@ -20,7 +20,7 @@ body:
     id: method
     attributes:
       label: Project type
-      description: Reimplementation, source port, original game, independent tool, compatibility layer, or analysis tool.
+      description: Game reimplementation, application clean-room rewrite, source port, original game, independent tool, source-available tool, compatibility layer, or analysis tool.
     validations:
       required: true
   - type: textarea

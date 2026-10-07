@@ -9,14 +9,14 @@ A community forge for game revivals, original open-source games, creative softwa
 [**Explore Slopforge →**](https://solarfren69420.github.io/Slopforge/) · [Project catalog](CATALOG.md) · [Submit a project](https://github.com/solarfren69420/Slopforge/issues/new?template=add-project.yml) · [Suggest a correction](https://github.com/solarfren69420/Slopforge/issues/new?template=correction.yml)
 
 <!-- catalog-stats:start -->
-**36 projects** · 15 games · 21 tools & software
+**49 projects** · 15 games · 34 tools & software
 <!-- catalog-stats:end -->
 
 ## The storefront
 
 Blue for games. Purple for tools. One place to find your next rabbit hole.
 
-- **Discover:** curated shelves of game revivals, creative tools, original games, and projects that work under the hood.
+- **Discover:** curated shelves of game revivals, ArtCraft's Crafting Apps, creative tools, original games, and projects that work under the hood.
 - **Games:** community engines and source ports alongside independently developed open-source games.
 - **Tools:** digital art, 3D, CAD, audio, video, mapping, electronics, office software, game engines, compatibility, and code analysis.
 - **My library:** save projects with the heart button. Favorites stay in your browser; no account is required.
@@ -30,6 +30,8 @@ Every project has a direct GitHub link. Where GitHub is a mirror or a project hu
 | Project label | What it means here |
 | --- | --- |
 | Reimplementation | An engine implementation intended to reproduce a classic game's behavior. This is not a binary matching or completion claim. |
+| Clean-room rewrite | Upstream describes an application rebuilt from observed behavior and public information. The label attributes the maintainer's methodology claim; Slopforge has not independently audited the clean-room process or established complete feature parity. |
+| Source-available tool | Publicly inspectable source under custom terms that may restrict reuse. Read the upstream license; this label is distinct from an open-source license. |
 | Source port | An adaptation of an existing source engine for modern systems and features. |
 | Original open-source game | A separately developed open-source game with its own upstream licensing. |
 | Game creation platform / game engine | Software for building games or running community-created game projects. |
@@ -40,6 +42,33 @@ Every project has a direct GitHub link. Where GitHub is a mirror or a project hu
 Krita, Blender, FreeCAD, LibreOffice, and the other independent tools are listed under their own names and repositories. Slopforge does not imply that they are reconstructed copies of Photoshop, AutoCAD, Excel, or other proprietary products. The blueprint's fictional game titles and numerical scores are not used as factual catalog entries.
 
 **BYOD** means the project needs separately obtained game data; upstream may document legally distributed free or shareware options. **Experimental** identifies development-stage work. Other tags describe upstream-documented capabilities, not a test performed by this directory.
+
+## ArtCraft & the Crafting Apps
+
+Added **2026-10-07** after reviewing [Storytold / ArtCraft](https://github.com/storytold)'s public repository inventory, commit-pinned READMEs, license files, and development qualifications. Use the [ArtCraft collection](https://solarfren69420.github.io/Slopforge/?view=tools&tag=ArtCraft) or the **Rust rewrite** tag on the storefront. Individual details link the reviewed source snapshots.
+
+| Application | Upstream-described workflow |
+| --- | --- |
+| [PhotoCraft](https://github.com/storytold/photocraft) | Photoshop-style image editing |
+| [LightCraft](https://github.com/storytold/lightcraft) | Lightroom-style photo management and raw development |
+| [FilmCraft](https://github.com/storytold/filmcraft) | Premiere Pro-style video editing |
+| [VectorCraft](https://github.com/storytold/vectorcraft) | Illustrator-style vector illustration |
+| [EffectCraft](https://github.com/storytold/effectcraft) | After Effects-style motion graphics and compositing |
+| [DesignCraft](https://github.com/storytold/designcraft) | InDesign-style page layout and publishing |
+| [PrintCraft](https://github.com/storytold/printcraft) | Acrobat-style PDF workflows |
+| [CADCraft](https://github.com/storytold/cadcraft) | AutoCAD-style drafting |
+| [SoundCraft](https://github.com/storytold/soundcraft) | Pro Tools-style audio production |
+| [GridCraft](https://github.com/storytold/gridcraft) | Excel-style spreadsheets |
+| [WordCraft](https://github.com/storytold/wordcraft) | Word-style documents |
+| [DeckCraft](https://github.com/storytold/deckcraft) | PowerPoint-style presentations |
+
+These twelve applications describe themselves as clean-room Rust reimplementations and publish MIT OR Apache-2.0 code licensing. Their bundled assets and branding have separate terms. The original commercial product names identify the intended workflows, not an official product, endorsement, or guaranteed replacement.
+
+Development stages and limitations are recorded per application: PhotoCraft is early alpha; CADCraft and DeckCraft are in early development; SoundCraft and GridCraft are pre-alpha. Other applications also document incomplete workflows or ongoing development. Feature-checklist estimates are not imported as completion scores.
+
+[ArtCraft Studio](https://github.com/storytold/artcraft) is also listed, under **Source-available tool**. Its [custom fair-source license](https://raw.githubusercontent.com/storytold/artcraft/3e5793b6934b51536606720e5d56bcfd1fe7cc2d/LICENSE.md) includes reuse restrictions; it does not share the Crafting Apps' MIT/Apache-2.0 terms. Generative workflows can use online providers and paid services.
+
+The [review records](data/storytold-review.json) preserve reviewed commits, source URLs, hashes, and inventory decisions. Supporting infrastructure, test corpora, media repositories, forks, and unclassified prototypes are not added as standalone applications. Slopforge did not build these applications, inspect every source file, or audit their claimed clean-room provenance.
 
 ## Files, attribution, and licensing
 
@@ -102,6 +131,6 @@ The site includes Open Graph and Twitter card metadata pointing to [`social-prev
 
 ## Review scope
 
-The initial catalog was reviewed against upstream repository pages on **2026-10-05** for identity and basic purpose. Data requirements and mirror/development notes are included per entry. The optional live link checker records reachable repositories and README hashes; successful retrieval is not proof of correctness or completeness. Source bodies are not redistributed in this repository.
+The initial catalog was reviewed against upstream repository pages on **2026-10-05** for identity and basic purpose. The ArtCraft additions were reviewed separately on **2026-10-07**, as documented above. Data requirements and mirror/development notes are included per entry. The optional live link checker records reachable repositories and README hashes; successful retrieval is not proof of correctness or completeness. Source bodies are not redistributed in this repository.
 
 Slopforge does not build, execute, certify, or gameplay-test cataloged upstream software. Platform filters describe upstream-listed operating-system families; versions, release packages, driver support, and setup may change. Follow the upstream README for the current details. Slopforge's own build and interactive storefront are checked separately.

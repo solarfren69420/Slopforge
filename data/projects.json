@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewed": "2026-10-05",
+  "reviewed": "2026-10-07",
   "review_scope": "Upstream repository identity and basic purpose reviewed. Platform targets are upstream-listed families, not installation or gameplay tests. No completion metrics are asserted.",
   "projects": [
     {
@@ -918,6 +918,569 @@
       "reviewed": "2026-10-05",
       "featured": false,
       "hue": 520
+    },
+    {
+      "id": "photocraft",
+      "name": "PhotoCraft",
+      "repo": "https://github.com/storytold/photocraft",
+      "kind": "tools",
+      "category": "Graphic design",
+      "method": "Clean-room rewrite",
+      "description": "Layered image editing inspired by Photoshop, rebuilt in Rust by the ArtCraft team.",
+      "data_note": "Use your own documents and media. Upstream describes an independent implementation without proprietary application code or assets; no original commercial installation is required by this listing. Slopforge distributes no application files.",
+      "language": "Rust",
+      "tags": [
+        "Rust rewrite",
+        "Experimental",
+        "ArtCraft"
+      ],
+      "monogram": "PC",
+      "art": "design",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream describes a clean-room reimplementation of Adobe Photoshop. Early alpha. Upstream says it is not yet a daily professional Photoshop replacement; menu wiring does not establish behavior parity. Clean-room methodology is an upstream claim, not an independent legal or source audit by Slopforge.",
+      "reviewed": "2026-10-07",
+      "featured": false,
+      "hue": 265,
+      "development_status": "Early alpha",
+      "license_note": "MIT OR Apache-2.0 for upstream code; bundled assets and branding have separate terms.",
+      "source_urls": [
+        {
+          "label": "Reviewed upstream README",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/47f9306fd06d5dee11acb84b108606f4c867222a/README.md"
+        },
+        {
+          "label": "Upstream LICENSE-MIT",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/47f9306fd06d5dee11acb84b108606f4c867222a/LICENSE-MIT"
+        },
+        {
+          "label": "Upstream LICENSE-APACHE",
+          "url": "https://raw.githubusercontent.com/storytold/photocraft/47f9306fd06d5dee11acb84b108606f4c867222a/LICENSE-APACHE"
+        }
+      ]
+    },
+    {
+      "id": "lightcraft",
+      "name": "LightCraft",
+      "repo": "https://github.com/storytold/lightcraft",
+      "kind": "tools",
+      "category": "Graphic design",
+      "method": "Clean-room rewrite",
+      "description": "A Rust photo-library and raw-development application modeled on the Lightroom workflow.",
+      "data_note": "Use your own documents and media. Upstream describes an independent implementation without proprietary application code or assets; no original commercial installation is required by this listing. Slopforge distributes no application files.",
+      "language": "Rust",
+      "tags": [
+        "Rust rewrite",
+        "Experimental",
+        "ArtCraft"
+      ],
+      "monogram": "LT",
+      "art": "design",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream describes a clean-room reimplementation of Adobe Lightroom. In development. Upstream documents camera-color calibration gaps and preview-only handling for some raw formats; check your camera and workflow. Clean-room methodology is an upstream claim, not an independent legal or source audit by Slopforge.",
+      "reviewed": "2026-10-07",
+      "featured": false,
+      "hue": 274,
+      "development_status": "In development",
+      "license_note": "MIT OR Apache-2.0 for upstream code; bundled assets and branding have separate terms.",
+      "source_urls": [
+        {
+          "label": "Reviewed upstream README",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/b35487add2e8169c18e36dff3a9815501c901d69/README.md"
+        },
+        {
+          "label": "Upstream LICENSE-MIT",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/b35487add2e8169c18e36dff3a9815501c901d69/LICENSE-MIT"
+        },
+        {
+          "label": "Upstream LICENSE-APACHE",
+          "url": "https://raw.githubusercontent.com/storytold/lightcraft/b35487add2e8169c18e36dff3a9815501c901d69/LICENSE-APACHE"
+        }
+      ]
+    },
+    {
+      "id": "filmcraft",
+      "name": "FilmCraft",
+      "repo": "https://github.com/storytold/filmcraft",
+      "kind": "tools",
+      "category": "Audio & video",
+      "method": "Clean-room rewrite",
+      "description": "A Rust video editor rebuilding Premiere-style timeline, color, and sound workflows.",
+      "data_note": "Use your own documents and media. Upstream describes an independent implementation without proprietary application code or assets; no original commercial installation is required by this listing. Slopforge distributes no application files.",
+      "language": "Rust",
+      "tags": [
+        "Rust rewrite",
+        "Experimental",
+        "ArtCraft"
+      ],
+      "monogram": "FL",
+      "art": "video",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream describes a clean-room reimplementation of Adobe Premiere Pro. In development. Upstream documents missing plug-in hosting, delivery-codec limits, and less testing on Windows and Linux than macOS. Clean-room methodology is an upstream claim, not an independent legal or source audit by Slopforge.",
+      "reviewed": "2026-10-07",
+      "featured": false,
+      "hue": 283,
+      "development_status": "In development",
+      "license_note": "MIT OR Apache-2.0 for upstream code; bundled assets and branding have separate terms.",
+      "source_urls": [
+        {
+          "label": "Reviewed upstream README",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/5695626216c24cf1871b6cef00431ae56ef152ff/README.md"
+        },
+        {
+          "label": "Upstream LICENSE-MIT",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/5695626216c24cf1871b6cef00431ae56ef152ff/LICENSE-MIT"
+        },
+        {
+          "label": "Upstream LICENSE-APACHE",
+          "url": "https://raw.githubusercontent.com/storytold/filmcraft/5695626216c24cf1871b6cef00431ae56ef152ff/LICENSE-APACHE"
+        }
+      ]
+    },
+    {
+      "id": "vectorcraft",
+      "name": "VectorCraft",
+      "repo": "https://github.com/storytold/vectorcraft",
+      "kind": "tools",
+      "category": "Graphic design",
+      "method": "Clean-room rewrite",
+      "description": "A Rust vector-illustration application rebuilding familiar Illustrator-style drawing workflows.",
+      "data_note": "Use your own documents and media. Upstream describes an independent implementation without proprietary application code or assets; no original commercial installation is required by this listing. Slopforge distributes no application files.",
+      "language": "Rust",
+      "tags": [
+        "Rust rewrite",
+        "Experimental",
+        "ArtCraft"
+      ],
+      "monogram": "VC",
+      "art": "design",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream describes a clean-room reimplementation of Adobe Illustrator. In active development. Upstream documents gaps in 3D, raster effects, interaction fidelity, and Windows/Linux packaging. Clean-room methodology is an upstream claim, not an independent legal or source audit by Slopforge.",
+      "reviewed": "2026-10-07",
+      "featured": false,
+      "hue": 292,
+      "development_status": "In active development",
+      "license_note": "MIT OR Apache-2.0 for upstream code; bundled assets and branding have separate terms.",
+      "source_urls": [
+        {
+          "label": "Reviewed upstream README",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/b64dcc02df4c656255142c0b611711d2717314db/README.md"
+        },
+        {
+          "label": "Upstream LICENSE-MIT",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/b64dcc02df4c656255142c0b611711d2717314db/LICENSE-MIT"
+        },
+        {
+          "label": "Upstream LICENSE-APACHE",
+          "url": "https://raw.githubusercontent.com/storytold/vectorcraft/b64dcc02df4c656255142c0b611711d2717314db/LICENSE-APACHE"
+        }
+      ]
+    },
+    {
+      "id": "effectcraft",
+      "name": "EffectCraft",
+      "repo": "https://github.com/storytold/effectcraft",
+      "kind": "tools",
+      "category": "3D & VFX",
+      "method": "Clean-room rewrite",
+      "description": "Motion graphics and compositing in Rust, inspired by the After Effects workflow.",
+      "data_note": "Use your own documents and media. Upstream describes an independent implementation without proprietary application code or assets; no original commercial installation is required by this listing. Slopforge distributes no application files.",
+      "language": "Rust",
+      "tags": [
+        "Rust rewrite",
+        "Experimental",
+        "ArtCraft"
+      ],
+      "monogram": "EC",
+      "art": "three",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream describes a clean-room reimplementation of Adobe After Effects. Early development. Upstream says it is not ready to replace After Effects for client work; AEP/AEPX import and After Effects plug-ins are unsupported. Clean-room methodology is an upstream claim, not an independent legal or source audit by Slopforge.",
+      "reviewed": "2026-10-07",
+      "featured": false,
+      "hue": 301,
+      "development_status": "Early development",
+      "license_note": "MIT OR Apache-2.0 for upstream code; bundled assets and branding have separate terms.",
+      "source_urls": [
+        {
+          "label": "Reviewed upstream README",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/608d1b077b65bb7591f26be587a2a5a47f4278bc/README.md"
+        },
+        {
+          "label": "Upstream LICENSE-MIT",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/608d1b077b65bb7591f26be587a2a5a47f4278bc/LICENSE-MIT"
+        },
+        {
+          "label": "Upstream LICENSE-APACHE",
+          "url": "https://raw.githubusercontent.com/storytold/effectcraft/608d1b077b65bb7591f26be587a2a5a47f4278bc/LICENSE-APACHE"
+        }
+      ]
+    },
+    {
+      "id": "designcraft",
+      "name": "DesignCraft",
+      "repo": "https://github.com/storytold/designcraft",
+      "kind": "tools",
+      "category": "Graphic design",
+      "method": "Clean-room rewrite",
+      "description": "A Rust page-layout and publishing application rebuilding InDesign-style workflows.",
+      "data_note": "Use your own documents and media. Upstream describes an independent implementation without proprietary application code or assets; no original commercial installation is required by this listing. Slopforge distributes no application files.",
+      "language": "Rust",
+      "tags": [
+        "Rust rewrite",
+        "Experimental",
+        "ArtCraft"
+      ],
+      "monogram": "DC",
+      "art": "design",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream describes a clean-room reimplementation of Adobe InDesign. In development. The upstream roadmap distinguishes implemented layout, text, and interchange features from work still planned; full InDesign parity is not established. Clean-room methodology is an upstream claim, not an independent legal or source audit by Slopforge.",
+      "reviewed": "2026-10-07",
+      "featured": false,
+      "hue": 310,
+      "development_status": "In development",
+      "license_note": "MIT OR Apache-2.0 for upstream code; bundled assets and branding have separate terms.",
+      "source_urls": [
+        {
+          "label": "Reviewed upstream README",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/d582277cc79c4bc9cee174b25b13fb11e6957aa5/README.md"
+        },
+        {
+          "label": "Upstream LICENSE-MIT",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/d582277cc79c4bc9cee174b25b13fb11e6957aa5/LICENSE-MIT"
+        },
+        {
+          "label": "Upstream LICENSE-APACHE",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/d582277cc79c4bc9cee174b25b13fb11e6957aa5/LICENSE-APACHE"
+        },
+        {
+          "label": "Upstream ROADMAP.md",
+          "url": "https://raw.githubusercontent.com/storytold/designcraft/d582277cc79c4bc9cee174b25b13fb11e6957aa5/ROADMAP.md"
+        }
+      ]
+    },
+    {
+      "id": "printcraft",
+      "name": "PrintCraft",
+      "repo": "https://github.com/storytold/printcraft",
+      "kind": "tools",
+      "category": "Office & productivity",
+      "method": "Clean-room rewrite",
+      "description": "A Rust PDF application rebuilding Acrobat-style reading, organization, and document workflows.",
+      "data_note": "Use your own documents and media. Upstream describes an independent implementation without proprietary application code or assets; no original commercial installation is required by this listing. Slopforge distributes no application files.",
+      "language": "Rust",
+      "tags": [
+        "Rust rewrite",
+        "Experimental",
+        "ArtCraft"
+      ],
+      "monogram": "PR",
+      "art": "office",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream describes a clean-room reimplementation of Adobe Acrobat. In development. Upstream identifies remaining work in rendering, content editing, OCR and professional PDF workflows; hardening and fidelity are still being developed. Clean-room methodology is an upstream claim, not an independent legal or source audit by Slopforge.",
+      "reviewed": "2026-10-07",
+      "featured": false,
+      "hue": 319,
+      "development_status": "In development",
+      "license_note": "MIT OR Apache-2.0 for upstream code; bundled assets and branding have separate terms.",
+      "source_urls": [
+        {
+          "label": "Reviewed upstream README",
+          "url": "https://raw.githubusercontent.com/storytold/printcraft/1c78ff479ce5cf5cbcf7af5100378c9311b95162/README.md"
+        },
+        {
+          "label": "Upstream LICENSE-MIT",
+          "url": "https://raw.githubusercontent.com/storytold/printcraft/1c78ff479ce5cf5cbcf7af5100378c9311b95162/LICENSE-MIT"
+        },
+        {
+          "label": "Upstream LICENSE-APACHE",
+          "url": "https://raw.githubusercontent.com/storytold/printcraft/1c78ff479ce5cf5cbcf7af5100378c9311b95162/LICENSE-APACHE"
+        },
+        {
+          "label": "Upstream ROADMAP.md",
+          "url": "https://raw.githubusercontent.com/storytold/printcraft/1c78ff479ce5cf5cbcf7af5100378c9311b95162/ROADMAP.md"
+        }
+      ]
+    },
+    {
+      "id": "cadcraft",
+      "name": "CADCraft",
+      "repo": "https://github.com/storytold/cadcraft",
+      "kind": "tools",
+      "category": "CAD & engineering",
+      "method": "Clean-room rewrite",
+      "description": "A Rust CAD and drafting application rebuilding familiar AutoCAD-style commands and drawings.",
+      "data_note": "Use your own documents and media. Upstream describes an independent implementation without proprietary application code or assets; no original commercial installation is required by this listing. Slopforge distributes no application files.",
+      "language": "Rust",
+      "tags": [
+        "Rust rewrite",
+        "Experimental",
+        "ArtCraft"
+      ],
+      "monogram": "CAD",
+      "art": "cad",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream describes a clean-room reimplementation of Autodesk AutoCAD. Early development. Upstream documents drawing, DXF/DWG interchange, and automation; this is not a claim of full AutoCAD or format compatibility. Clean-room methodology is an upstream claim, not an independent legal or source audit by Slopforge.",
+      "reviewed": "2026-10-07",
+      "featured": false,
+      "hue": 328,
+      "development_status": "Early development",
+      "license_note": "MIT OR Apache-2.0 for upstream code; bundled assets and branding have separate terms.",
+      "source_urls": [
+        {
+          "label": "Reviewed upstream README",
+          "url": "https://raw.githubusercontent.com/storytold/cadcraft/7d4ca2830d4516656799a3a32a6ab03093759140/README.md"
+        },
+        {
+          "label": "Upstream LICENSE-MIT",
+          "url": "https://raw.githubusercontent.com/storytold/cadcraft/7d4ca2830d4516656799a3a32a6ab03093759140/LICENSE-MIT"
+        },
+        {
+          "label": "Upstream LICENSE-APACHE",
+          "url": "https://raw.githubusercontent.com/storytold/cadcraft/7d4ca2830d4516656799a3a32a6ab03093759140/LICENSE-APACHE"
+        }
+      ]
+    },
+    {
+      "id": "soundcraft",
+      "name": "SoundCraft",
+      "repo": "https://github.com/storytold/soundcraft",
+      "kind": "tools",
+      "category": "Audio & video",
+      "method": "Clean-room rewrite",
+      "description": "A Rust audio workstation rebuilding Pro Tools-style recording, editing, and mixing workflows.",
+      "data_note": "Use your own documents and media. Upstream describes an independent implementation without proprietary application code or assets; no original commercial installation is required by this listing. Slopforge distributes no application files.",
+      "language": "Rust",
+      "tags": [
+        "Rust rewrite",
+        "Experimental",
+        "ArtCraft"
+      ],
+      "monogram": "SC",
+      "art": "audio",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream describes a clean-room reimplementation of Avid Pro Tools. Pre-alpha. Upstream distinguishes implemented menu items from feature depth and says significant work remains before the first alpha. Clean-room methodology is an upstream claim, not an independent legal or source audit by Slopforge.",
+      "reviewed": "2026-10-07",
+      "featured": false,
+      "hue": 337,
+      "development_status": "Pre-alpha",
+      "license_note": "MIT OR Apache-2.0 for upstream code; bundled assets and branding have separate terms.",
+      "source_urls": [
+        {
+          "label": "Reviewed upstream README",
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/876b098a2088d2a130aa3e655da2d95d1cb79c3b/README.md"
+        },
+        {
+          "label": "Upstream LICENSE-MIT",
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/876b098a2088d2a130aa3e655da2d95d1cb79c3b/LICENSE-MIT"
+        },
+        {
+          "label": "Upstream LICENSE-APACHE",
+          "url": "https://raw.githubusercontent.com/storytold/soundcraft/876b098a2088d2a130aa3e655da2d95d1cb79c3b/LICENSE-APACHE"
+        }
+      ]
+    },
+    {
+      "id": "gridcraft",
+      "name": "GridCraft",
+      "repo": "https://github.com/storytold/gridcraft",
+      "kind": "tools",
+      "category": "Office & productivity",
+      "method": "Clean-room rewrite",
+      "description": "A Rust spreadsheet application rebuilding Excel-style sheets, formulas, and workbook workflows.",
+      "data_note": "Use your own documents and media. Upstream describes an independent implementation without proprietary application code or assets; no original commercial installation is required by this listing. Slopforge distributes no application files.",
+      "language": "Rust",
+      "tags": [
+        "Rust rewrite",
+        "Experimental",
+        "ArtCraft"
+      ],
+      "monogram": "GC",
+      "art": "office",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream describes a clean-room reimplementation of Microsoft Excel. Pre-alpha. Upstream identifies work remaining on XLSX fidelity, large-sheet performance, signed releases, and advanced spreadsheet features. Clean-room methodology is an upstream claim, not an independent legal or source audit by Slopforge.",
+      "reviewed": "2026-10-07",
+      "featured": false,
+      "hue": 346,
+      "development_status": "Pre-alpha",
+      "license_note": "MIT OR Apache-2.0 for upstream code; bundled assets and branding have separate terms.",
+      "source_urls": [
+        {
+          "label": "Reviewed upstream README",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/efbcb01b7747a409459c7788826118856b3bc9c8/README.md"
+        },
+        {
+          "label": "Upstream LICENSE-MIT",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/efbcb01b7747a409459c7788826118856b3bc9c8/LICENSE-MIT"
+        },
+        {
+          "label": "Upstream LICENSE-APACHE",
+          "url": "https://raw.githubusercontent.com/storytold/gridcraft/efbcb01b7747a409459c7788826118856b3bc9c8/LICENSE-APACHE"
+        }
+      ]
+    },
+    {
+      "id": "wordcraft",
+      "name": "WordCraft",
+      "repo": "https://github.com/storytold/wordcraft",
+      "kind": "tools",
+      "category": "Office & productivity",
+      "method": "Clean-room rewrite",
+      "description": "A Rust word processor rebuilding Word-style document, ribbon, and DOCX workflows.",
+      "data_note": "Use your own documents and media. Upstream describes an independent implementation without proprietary application code or assets; no original commercial installation is required by this listing. Slopforge distributes no application files.",
+      "language": "Rust",
+      "tags": [
+        "Rust rewrite",
+        "Experimental",
+        "ArtCraft"
+      ],
+      "monogram": "WC",
+      "art": "office",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream describes a clean-room reimplementation of Microsoft Word. Pre-alpha development. Upstream describes remaining real-world DOCX testing, native printing, signed builds, and advanced document features. Clean-room methodology is an upstream claim, not an independent legal or source audit by Slopforge.",
+      "reviewed": "2026-10-07",
+      "featured": false,
+      "hue": 355,
+      "development_status": "Pre-alpha development",
+      "license_note": "MIT OR Apache-2.0 for upstream code; bundled assets and branding have separate terms.",
+      "source_urls": [
+        {
+          "label": "Reviewed upstream README",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/c9824abfc20619ccc9dd876cfa1cc9ceb7c4dca4/README.md"
+        },
+        {
+          "label": "Upstream LICENSE-MIT",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/c9824abfc20619ccc9dd876cfa1cc9ceb7c4dca4/LICENSE-MIT"
+        },
+        {
+          "label": "Upstream LICENSE-APACHE",
+          "url": "https://raw.githubusercontent.com/storytold/wordcraft/c9824abfc20619ccc9dd876cfa1cc9ceb7c4dca4/LICENSE-APACHE"
+        }
+      ]
+    },
+    {
+      "id": "deckcraft",
+      "name": "DeckCraft",
+      "repo": "https://github.com/storytold/deckcraft",
+      "kind": "tools",
+      "category": "Office & productivity",
+      "method": "Clean-room rewrite",
+      "description": "A Rust presentation application rebuilding PowerPoint-style decks, layouts, and slide shows.",
+      "data_note": "Use your own documents and media. Upstream describes an independent implementation without proprietary application code or assets; no original commercial installation is required by this listing. Slopforge distributes no application files.",
+      "language": "Rust",
+      "tags": [
+        "Rust rewrite",
+        "Experimental",
+        "ArtCraft"
+      ],
+      "monogram": "DK",
+      "art": "office",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "Upstream describes a clean-room reimplementation of Microsoft PowerPoint. Early development toward a first alpha. Upstream feature-breadth estimates are not a completion score or a guarantee of PowerPoint fidelity. Clean-room methodology is an upstream claim, not an independent legal or source audit by Slopforge.",
+      "reviewed": "2026-10-07",
+      "featured": false,
+      "hue": 364,
+      "development_status": "Early development",
+      "license_note": "MIT OR Apache-2.0 for upstream code; bundled assets and branding have separate terms.",
+      "source_urls": [
+        {
+          "label": "Reviewed upstream README",
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/942a2c80cc5110f9c8640ffe1925600182ae2284/README.md"
+        },
+        {
+          "label": "Upstream LICENSE-MIT",
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/942a2c80cc5110f9c8640ffe1925600182ae2284/LICENSE-MIT"
+        },
+        {
+          "label": "Upstream LICENSE-APACHE",
+          "url": "https://raw.githubusercontent.com/storytold/deckcraft/942a2c80cc5110f9c8640ffe1925600182ae2284/LICENSE-APACHE"
+        }
+      ]
+    },
+    {
+      "id": "artcraft",
+      "name": "ArtCraft Studio",
+      "repo": "https://github.com/storytold/artcraft",
+      "kind": "tools",
+      "category": "Graphic design",
+      "method": "Source-available tool",
+      "description": "An interactive AI image and video studio with 2D composition and 3D scene staging.",
+      "data_note": "Use your own media. Generative workflows can depend on provider accounts, online services, and paid models. Check upstream setup and service terms.",
+      "language": "Rust",
+      "tags": [
+        "Source available",
+        "ArtCraft",
+        "Creative"
+      ],
+      "monogram": "AC",
+      "art": "three",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "source_note": "The main studio has custom fair-source terms, including restrictions on commercial resale, competing products, and removing specified links/services. Its README lists stable Windows/macOS releases and a Linux source-build path. This license differs from the MIT/Apache-2.0 Crafting Apps.",
+      "reviewed": "2026-10-07",
+      "featured": false,
+      "hue": 292,
+      "development_status": "Windows/macOS releases; Linux source build",
+      "license_note": "Custom ArtCraft fair-source license (WIP); use and reuse restrictions apply.",
+      "source_urls": [
+        {
+          "label": "Reviewed upstream README",
+          "url": "https://raw.githubusercontent.com/storytold/artcraft/3e5793b6934b51536606720e5d56bcfd1fe7cc2d/README.md"
+        },
+        {
+          "label": "Upstream license",
+          "url": "https://raw.githubusercontent.com/storytold/artcraft/3e5793b6934b51536606720e5d56bcfd1fe7cc2d/LICENSE.md"
+        }
+      ]
     }
   ]
 }

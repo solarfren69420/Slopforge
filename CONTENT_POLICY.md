@@ -4,7 +4,7 @@ Slopforge is a directory of community software projects. The public site contain
 
 ## Accepted listings
 
-Community game reimplementations, source ports, independently developed open-source games, game engines, creative and professional open-source software, compatibility layers, and legitimate code analysis tools may be submitted with upstream evidence. A listing must accurately identify the maintainer and the project's purpose, source location, and data requirements.
+Community game reimplementations, source ports, independently developed open-source games, game engines, creative and professional software, compatibility layers, and legitimate code analysis tools may be submitted with upstream evidence. Application rewrites must attribute upstream methodology claims and record development limitations. Source-available software with custom restrictions must be labeled separately from open-source software and link its license. A listing must accurately identify the maintainer and the project's purpose, source location, licensing, and data requirements.
 
 ## Content we do not host or accept
 

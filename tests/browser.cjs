@@ -26,6 +26,15 @@ const url=process.env.SLOPFORGE_URL || 'http://localhost:8080';
   await click('.main-nav [data-view="games"]');assert.equal(await count(),catalog.projects.filter(p=>p.kind==='games').length);
   await click('.main-nav [data-view="tools"]');assert.equal(await count(),catalog.projects.filter(p=>p.kind==='tools').length);
   assert.equal(await page.locator('body').getAttribute('data-view'),'tools');
+  const family=catalog.projects.filter(p=>p.tags.includes('ArtCraft'));
+  await click('[data-tag="ArtCraft"]');assert.equal(await count(),family.length);
+  await page.locator('#method').selectOption('Clean-room rewrite');assert.equal(await count(),family.filter(p=>p.method==='Clean-room rewrite').length);
+  await click('[data-detail="effectcraft"]');assert.match(await page.locator('#detail-body').innerText(),/AEP\/AEPX/);assert.equal(await page.locator('#detail-body a.detail-source').count(),4);
+  await page.keyboard.press('Escape');await page.waitForFunction(()=>!location.hash);
+  await page.locator('#method').selectOption('Source-available tool');assert.equal(await count(),1);
+  await click('[data-detail="artcraft"]');assert.match(await page.locator('#detail-body').innerText(),/Custom ArtCraft fair-source/);
+  await page.keyboard.press('Escape');await page.waitForFunction(()=>!location.hash);await click('#reset');
+  await page.locator('#search').fill('storytold');await page.waitForFunction(expected=>document.querySelectorAll('.project-card').length===expected,family.length);assert.equal(await count(),family.length);await click('#reset');
   await click('[data-category="CAD & engineering"]');assert.equal(await count(),catalog.projects.filter(p=>p.kind==='tools'&&p.category==='CAD & engineering').length);
   await click('#reset');
   await page.locator('#search').fill('Krita');await page.waitForFunction(()=>document.querySelectorAll('.project-card').length===1);
@@ -54,7 +63,7 @@ const url=process.env.SLOPFORGE_URL || 'http://localhost:8080';
     await page.setViewportSize({width,height:900});await page.goto(url);await ready();
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,`Overflow at ${width}px`);
     if(width===390)await page.screenshot({path:path.join(output,'mobile.png'),fullPage:true});
-    if(width<720){await click('.main-nav [data-view="tools"]');assert.equal(await count(),catalog.projects.filter(p=>p.kind==='tools').length);await page.locator('#mobile-category').selectOption('CAD & engineering');assert.equal(await count(),2);await page.locator('#mobile-platform').selectOption('Linux');assert.equal(await count(),2);}
+    if(width<720){await click('.main-nav [data-view="tools"]');assert.equal(await count(),catalog.projects.filter(p=>p.kind==='tools').length);await page.locator('#mobile-category').selectOption('CAD & engineering');assert.equal(await count(),catalog.projects.filter(p=>p.kind==='tools'&&p.category==='CAD & engineering').length);await page.locator('#mobile-platform').selectOption('Linux');assert.equal(await count(),catalog.projects.filter(p=>p.kind==='tools'&&p.category==='CAD & engineering'&&p.platforms.includes('Linux')).length);}
   }
   assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);
   console.log('Browser checks passed: inventory, links, search, combined filters, sorting, favorites, persistence, empty states, shared URLs, dialogs, history, keyboard, and six responsive widths.');

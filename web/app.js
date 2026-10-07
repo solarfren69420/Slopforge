@@ -40,7 +40,7 @@
     const methods = [...new Set(base.map(p => p.method))];
     $('#method').innerHTML = '<option value="">All project types</option>' + methods.map(method => `<option value="${escape(method)}">${escape(method)}</option>`).join('');
     $('#method').value = state.method;
-    $('#tags').innerHTML = ['BYOD','Multiplayer','Mod support','Creative','Compatibility','Code analysis','Experimental','Controller support','Game development'].map(tag => `<button class="tag-button ${state.tag === tag ? 'active' : ''}" data-tag="${escape(tag)}" aria-pressed="${state.tag === tag}">${escape(tag)}</button>`).join('');
+    $('#tags').innerHTML = ['ArtCraft','Rust rewrite','BYOD','Multiplayer','Mod support','Creative','Compatibility','Code analysis','Experimental','Source available','Controller support','Game development'].map(tag => `<button class="tag-button ${state.tag === tag ? 'active' : ''}" data-tag="${escape(tag)}" aria-pressed="${state.tag === tag}">${escape(tag)}</button>`).join('');
     for (const button of document.querySelectorAll('[data-view]')) { button.classList.toggle('active',button.dataset.view === state.view); if (button.hasAttribute('aria-pressed')) button.setAttribute('aria-pressed', String(button.dataset.view === state.view)); }
     $('#saved-count').textContent = favorites.size;
   }
@@ -52,11 +52,16 @@
   function shelves(list) {
     const filtered = state.q || state.category || state.platform || state.method || state.tag || state.sort !== 'featured' || state.view === 'saved';
     if (filtered) return [{title:state.view === 'saved' ? 'Your collection' : state.category || 'Explore the projects', symbol:'◇', subtitle:'Follow a project to its source.', list}];
-    if (state.view === 'tools') return [...new Set(list.map(p => p.category))].map(category => ({title:category,symbol:categoryIcons[category],subtitle:'Independent projects. Open possibilities.',list:list.filter(p => p.category === category)}));
+    if (state.view === 'tools') {
+      const artcraft = list.filter(p => p.tags.includes('ArtCraft'));
+      const rest = list.filter(p => !p.tags.includes('ArtCraft'));
+      return [...(artcraft.length ? [{title:'ArtCraft & the Crafting Apps',symbol:'⚒',subtitle:'Rust rewrites, upstream evidence, and clear development notes.',list:artcraft}] : []), ...[...new Set(rest.map(p => p.category))].map(category => ({title:category,symbol:categoryIcons[category],subtitle:'Community projects. Open possibilities.',list:rest.filter(p => p.category === category)}))];
+    }
     const groups = [];
     const used = new Set();
     function add(title,symbol,subtitle,predicate,view) { const matches = list.filter(p => !used.has(p.id) && predicate(p)); if (matches.length) { matches.forEach(p => used.add(p.id)); groups.push({title,symbol,subtitle,list:matches,view}); } }
     add('Community game revivals','✦','Old favorites. A new chapter.',p => p.kind === 'games' && p.featured,'games');
+    add('ArtCraft & the Crafting Apps','⚒','Rust rewrites, upstream evidence, and clear development notes.',p => p.tags.includes('ArtCraft'),'tools');
     if (state.view === 'discover') add('Tools without the tollbooth','⚒','Create on your own terms.',p => p.kind === 'tools' && ['krita','blender','freecad','gimp'].includes(p.id),'tools');
     add('Keep the classics alive','↻','Engines, ports, and community persistence.',p => p.kind === 'games' && !['Original open-source game','Game creation platform'].includes(p.method),'games');
     add('Play it your way','✣','Original worlds. Community possibilities.',p => p.kind === 'games','games');
@@ -67,7 +72,7 @@
   }
   function render() {
     document.body.dataset.view = state.view; sidebars(); $('#sort').value = state.sort;
-    const hero = {discover:['Play more.<br>Make more.<br><span>Own your tools.</span>','Game revivals. Creative powerhouses. Tools that put you in control. Welcome to the good kind of slop.'],games:['Old favorites.<br>New possibilities.<br><span>Keep playing.</span>','Community engines, source ports, and original open-source games. Find the people giving play its next chapter.'],tools:['Less lock-in.<br>More creating.<br><span>Make it yours.</span>','Independent creative tools, open engines, and compatibility layers. Your next great idea starts with the right tools.']};
+    const hero = {discover:['Play more.<br>Make more.<br><span>Own your tools.</span>','Game revivals. Creative powerhouses. Tools that put you in control. Welcome to the good kind of slop.'],games:['Old favorites.<br>New possibilities.<br><span>Keep playing.</span>','Community engines, source ports, and original open-source games. Find the people giving play its next chapter.'],tools:['Less lock-in.<br>More creating.<br><span>Make it yours.</span>','Clean-room rewrites, independent creative tools, open engines, and compatibility layers. Your next great idea starts with the right tools.']};
     if (hero[state.view]) { $('#hero-title').innerHTML = hero[state.view][0]; $('#hero-description').textContent = hero[state.view][1]; }
     $('#catalog-title').innerHTML = ({discover:'Fresh from the forge',games:'A more playable tomorrow',tools:'Your next creative superpower',saved:'Your corner of the forge'}[state.view]) + '<span class="title-dot">.</span>';
     $('#catalog-eyebrow').textContent = {discover:'A LITTLE BIT OF EVERYTHING',games:'COMMUNITY GAME PROJECTS',tools:'OPEN TOOLS. OPEN POSSIBILITIES.',saved:'SAVED IN THIS BROWSER'}[state.view];
@@ -91,9 +96,15 @@
     notify(storageAvailable ? `${p.name} ${favorites.has(id) ? 'saved to' : 'removed from'} your library.` : 'Browser storage is unavailable. Your library will last for this session.');
     render(); document.querySelector(`[data-save="${id}"]`)?.focus({preventScroll:true});
   }
+  function reviewDetails(p) {
+    const sources = (p.source_urls || []).filter(source => {
+      try { const url = new URL(source.url); return url.protocol === 'https:' && ['github.com','raw.githubusercontent.com'].includes(url.hostname); } catch { return false; }
+    });
+    return `${p.development_status || p.license_note ? `<div class="detail-meta">${p.development_status ? `<div><small>UPSTREAM DEVELOPMENT STATUS</small>${escape(p.development_status)}</div>` : ''}${p.license_note ? `<div><small>UPSTREAM LICENSE</small>${escape(p.license_note)}</div>` : ''}</div>` : ''}${sources.length ? `<h3>Reviewed sources</h3><p>${sources.map(source => `<a class="detail-source" href="${escape(source.url)}" target="_blank" rel="noopener noreferrer">${escape(source.label)} ↗</a>`).join('<br>')}</p>` : ''}`;
+  }
   function showDetail(id, setHash = true) {
     const p = projects.find(p => p.id === id); if (!p) return;
-    $('#detail-body').innerHTML = `<div class="dialog-top"><span class="eyebrow">${escape(p.category)} / ${p.kind.toUpperCase()}</span><button class="close-button" data-close aria-label="Close project details">×</button></div>${art(p,true)}<h2 id="detail-title">${escape(p.name)}</h2><p>${escape(p.description)}</p><div class="detail-meta"><div><small>PROJECT TYPE</small>${escape(p.method)}</div><div><small>UPSTREAM-LISTED PLATFORMS</small>${escape(p.platforms.join(' / '))}</div><div><small>PRIMARY TECHNOLOGY</small>${escape(p.language)}</div><div><small>LISTING REVIEWED</small>${escape(p.reviewed)}</div></div><h3>Data & setup</h3><p class="source-note">${escape(p.data_note)}</p><h3>Know the source</h3><p>${escape(p.source_note)}</p><a class="detail-source" href="${escape(p.repo)}" target="_blank" rel="noopener noreferrer">${escape(p.repo)} ↗</a><p>Repository identity and basic purpose reviewed. Slopforge has not built or gameplay-tested this project. Check upstream documentation for current requirements, licensing, and support.</p><div class="dialog-actions"><a class="button primary" href="${escape(p.repo)}" target="_blank" rel="noopener noreferrer">View upstream GitHub ↗</a><button class="button glass" data-copy="${escape(p.id)}">Copy project link</button><a class="button glass" href="${repoRoot}/issues/new?template=correction.yml&title=${encodeURIComponent('Correction: '+p.name)}">Suggest a correction ↗</a></div>`;
+    $('#detail-body').innerHTML = `<div class="dialog-top"><span class="eyebrow">${escape(p.category)} / ${p.kind.toUpperCase()}</span><button class="close-button" data-close aria-label="Close project details">×</button></div>${art(p,true)}<h2 id="detail-title">${escape(p.name)}</h2><p>${escape(p.description)}</p><div class="detail-meta"><div><small>PROJECT TYPE</small>${escape(p.method)}</div><div><small>UPSTREAM-LISTED PLATFORMS</small>${escape(p.platforms.join(' / '))}</div><div><small>PRIMARY TECHNOLOGY</small>${escape(p.language)}</div><div><small>LISTING REVIEWED</small>${escape(p.reviewed)}</div></div><h3>Data & setup</h3><p class="source-note">${escape(p.data_note)}</p><h3>Know the source</h3><p>${escape(p.source_note)}</p><a class="detail-source" href="${escape(p.repo)}" target="_blank" rel="noopener noreferrer">${escape(p.repo)} ↗</a>${reviewDetails(p)}<p>Repository identity and basic purpose reviewed. Slopforge has not built or gameplay-tested this project. Check upstream documentation for current requirements, licensing, and support.</p><div class="dialog-actions"><a class="button primary" href="${escape(p.repo)}" target="_blank" rel="noopener noreferrer">View upstream GitHub ↗</a><button class="button glass" data-copy="${escape(p.id)}">Copy project link</button><a class="button glass" href="${repoRoot}/issues/new?template=correction.yml&title=${encodeURIComponent('Correction: '+p.name)}">Suggest a correction ↗</a></div>`;
     if (!$('#detail').open) $('#detail').showModal();
     if(setHash) { const url = new URL(location.href);url.hash = 'project=' + p.id;history.replaceState({},'',url); }
   }

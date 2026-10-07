@@ -14,6 +14,7 @@ METHODS = {
     'Reimplementation', 'Source port', 'Original open-source game',
     'Game creation platform', 'Independent open-source tool',
     'Game engine', 'Compatibility layer', 'Reverse engineering tool',
+    'Clean-room rewrite', 'Source-available tool',
 }
 
 
@@ -33,6 +34,12 @@ def validate(catalog):
         assert isinstance(p['tags'],list) and len(p['tags']) == len(set(p['tags'])), f"Invalid tags in {p['id']}"
         assert date.fromisoformat(p['reviewed']) <= date.today(), 'Review date is in the future'
         assert not any(k in p for k in ('completion','percent','stars')), 'Unsupported metrics are not catalog fields'
+        if p['method'] in ('Clean-room rewrite','Source-available tool'):
+            assert p.get('license_note') and p.get('source_urls'), f"Missing license or evidence in {p['id']}"
+        for source in p.get('source_urls',[]):
+            parsed=urlparse(source['url'])
+            assert parsed.scheme=='https' and parsed.hostname in {'github.com','raw.githubusercontent.com'}, f"Invalid evidence URL in {p['id']}"
+            assert source.get('label'), f"Missing evidence label in {p['id']}"
     return projects
 
 
@@ -45,6 +52,8 @@ def markdown(projects):
         for p in projects:
             if p['kind'] != kind: continue
             note = p['data_note'] if kind == 'games' else p['source_note']
+            if p.get('source_urls'):
+                note += ' [Reviewed source]('+p['source_urls'][0]['url']+'). '+p['license_note']
             values = [f"[{p['name']}]({p['repo']})",p['category'],p['method'],', '.join(p['platforms']),note,p['reviewed']]
             lines.append('| ' + ' | '.join(v.replace('|','\\|').replace('\n',' ') for v in values) + ' |')
         lines.append('')
