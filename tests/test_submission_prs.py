@@ -47,6 +47,7 @@ class PRTests(unittest.TestCase):
     def test_external_or_unrecognized_pr_cannot_be_published(self):
         self.assertEqual(verify_pr(self.pr, 'owner/site'), 3)
         for change in [{'base': {'ref': 'other'}}, {'body': 'hello'}, {'state': 'closed'},
+                       {'head': {'ref': 'submissions/issue-3', 'repo': None}},
                        {'head': {'ref': 'submissions/issue-3', 'repo': {'full_name': 'attacker/site'}}}]:
             with self.subTest(change=change), self.assertRaises(ValueError):
                 verify_pr({**self.pr, **change}, 'owner/site')
@@ -55,6 +56,21 @@ class PRTests(unittest.TestCase):
         class API:
             def request(self, path): return {'permission': 'read'}
         self.assertFalse(actor_can_publish(API(), 'owner/site', 'reader'))
+
+    def test_checked_box_from_reader_cannot_read_or_change_proposal(self):
+        pr = self.pr
+        class API:
+            def __init__(self): self.calls = []
+            def request(self, path, method='GET', data=None):
+                self.calls.append((path, method))
+                if path.endswith('/pulls/7'): return pr
+                if '/collaborators/' in path: return {'permission': 'read'}
+                raise AssertionError('Unauthorized approval must stop before accessing proposal data')
+        api = API()
+        with self.assertRaisesRegex(ValueError, 'maintainer with write permission'):
+            prepare(api, 'owner/site', 7, 'reader')
+        self.assertEqual(len(api.calls), 2)
+        self.assertTrue(all(method == 'GET' for _, method in api.calls))
 
     def test_closed_pr_is_not_reopened_by_submission_edits(self):
         class API:

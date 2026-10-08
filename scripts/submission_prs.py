@@ -120,7 +120,8 @@ def actor_can_publish(api, repository, actor):
 
 
 def verify_pr(pr, repository):
-    if pr['base']['ref'] != 'main' or pr['head']['repo']['full_name'].lower() != repository.lower():
+    head_repository = (pr['head'].get('repo') or {}).get('full_name', '')
+    if pr['base']['ref'] != 'main' or head_repository.lower() != repository.lower():
         raise ValueError('Only same-repository submission proposals targeting main can be published')
     match = re.fullmatch(r'submissions/issue-(\d+)', pr['head']['ref'])
     if not match or f'{PR_MARKER}{match[1]} -->' not in (pr.get('body') or ''):
