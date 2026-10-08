@@ -9,7 +9,7 @@ A community forge for game revivals, original open-source games, creative softwa
 [**Explore Slopforge →**](https://solarfren69420.github.io/Slopforge/) · [Project catalog](CATALOG.md) · [Activity & review queue](https://solarfren69420.github.io/Slopforge/activity.html) · [Submit a project](https://github.com/solarfren69420/Slopforge/issues/new?template=add-project.yml) · [Submission inbox](https://github.com/solarfren69420/Slopforge/issues) · [Suggest a correction](https://github.com/solarfren69420/Slopforge/issues/new?template=correction.yml)
 
 <!-- catalog-stats:start -->
-**49 projects** · 15 games · 34 tools & software
+**50 projects** · 16 games · 34 tools & software
 <!-- catalog-stats:end -->
 
 ## The storefront

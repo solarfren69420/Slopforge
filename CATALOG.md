@@ -23,6 +23,7 @@ Descriptions and labels are directory metadata. Upstream links are the evidence 
 | [Luanti](https://github.com/luanti-org/luanti) | Sandbox | Game creation platform | Windows, Linux, macOS | Install a separately licensed game or mod through the upstream ecosystem. This is a platform, not a bundled game catalog. | 2026-10-05 |
 | [The Battle for Wesnoth](https://github.com/wesnoth/wesnoth) | Strategy | Original open-source game | Windows, Linux, macOS | Upstream distributes its own licensed code and assets. No game files are included here. | 2026-10-05 |
 | [openage](https://github.com/SFTtech/openage) | Strategy | Reimplementation | Windows, Linux, macOS | Experimental engine work, not a completed drop-in game. Original Age of Empires game data is required; consult upstream status and setup. | 2026-10-05 |
+| [fheroes2](https://github.com/ihhub/fheroes2) | Strategy | Reimplementation | Windows, Linux, macOS | Requires Heroes of Might and Magic II data from a legally obtained full game or the demo documented by upstream. Follow the upstream installation guide; Slopforge hosts no game resources or binaries. [Reviewed source](https://github.com/ihhub/fheroes2/blob/9754feff8501dbb69df95f3b999156a32eb8d7d3/README.md). Upstream engine code uses GNU GPL v2. Original game resources have separate rights and are not covered by the engine license. | 2026-10-08 |
 
 ## Tools & software
 

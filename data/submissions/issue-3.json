@@ -1,0 +1,44 @@
+{
+  "issue_number": 3,
+  "project": {
+    "id": "fheroes2",
+    "name": "fheroes2",
+    "repo": "https://github.com/ihhub/fheroes2",
+    "kind": "games",
+    "category": "Strategy",
+    "method": "Reimplementation",
+    "description": "A community recreation of the Heroes of Might and Magic II engine with modern display options and gameplay improvements.",
+    "data_note": "Requires Heroes of Might and Magic II data from a legally obtained full game or the demo documented by upstream. Follow the upstream installation guide; Slopforge hosts no game resources or binaries.",
+    "source_note": "Upstream describes an engine written from scratch to reproduce Heroes of Might and Magic II with enhancements. Its installation guide documents Windows, Linux, and macOS along with additional targets. This listing does not assert binary matching, complete parity, or a build tested by Slopforge.",
+    "language": "C++",
+    "platforms": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "tags": [
+      "BYOD"
+    ],
+    "monogram": "H2",
+    "art": "strategy",
+    "reviewed": "2026-10-08",
+    "featured": false,
+    "hue": 205,
+    "license_note": "Upstream engine code uses GNU GPL v2. Original game resources have separate rights and are not covered by the engine license.",
+    "source_urls": [
+      {
+        "label": "Reviewed upstream README",
+        "url": "https://github.com/ihhub/fheroes2/blob/9754feff8501dbb69df95f3b999156a32eb8d7d3/README.md"
+      },
+      {
+        "label": "Reviewed installation and data requirements",
+        "url": "https://github.com/ihhub/fheroes2/blob/9754feff8501dbb69df95f3b999156a32eb8d7d3/docs/INSTALL.md"
+      },
+      {
+        "label": "Reviewed engine license",
+        "url": "https://github.com/ihhub/fheroes2/blob/9754feff8501dbb69df95f3b999156a32eb8d7d3/LICENSE"
+      }
+    ]
+  },
+  "submitter_evidence": "Amazing HD recreation of Heroes of Might and Magic II.\nEngine only. Bring your own game data."
+}
