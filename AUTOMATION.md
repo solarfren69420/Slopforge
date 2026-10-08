@@ -35,6 +35,8 @@ No submission automatically creates or merges a pull request. Prepared patches a
 
 A push changing the submission checker/workflow also runs a live integration smoke test. It creates a clearly named temporary bot issue, verifies draft generation, duplicate detection, and idempotent comment updates, then closes the issue. This checks real API permissions; human issue-event delivery is provided by GitHub's configured Issues trigger.
 
+After that test, the workflow checks existing open human submissions and corrections, updating its own comments and saving prepared files in the `submission-backfill-drafts` artifact. This processes requests submitted before the checker was installed. Unrelated issues remain untouched.
+
 ## Browser checks
 
 Every Pages build and pull request installs pinned Playwright and Chromium, serves `_site` locally, and exercises inventory, artwork, search/filters, favorites, persistence, detail evidence, history, keyboard shortcuts, shareable routes, six responsive widths, the activity page, and catalog loading when optional tracking fails. Failed tests block deployment. Screenshots and server logs remain available for 14 days.

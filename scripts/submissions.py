@@ -108,7 +108,8 @@ def comment_body(result, number):
         lines += ['', 'A draft project record and catalog patch are prepared. Their blank review fields must be completed; they are not a publishable listing.', '',
                   'Maintainer checklist:', ''] + ['- [ ] Verify ' + field for field in result['missing_review']]
         if run:
-            lines += ['', f'[Download the submission-{number} artifact from this workflow run](https://github.com/{repository}/actions/runs/{run}).']
+            artifact = os.environ.get('SUBMISSION_ARTIFACT', f'submission-{number}')
+            lines += ['', f'[Download the {artifact} artifact from this workflow run](https://github.com/{repository}/actions/runs/{run}).']
     lines += ['', 'If you edit the form, the checker updates this comment. No catalog entry has been added automatically.']
     return '\n'.join(lines) + '\n'
 
@@ -139,22 +140,10 @@ def prepare_files(result, number, catalog, output):
     return body
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--event', default=os.environ.get('GITHUB_EVENT_PATH'))
-    parser.add_argument('--issue-number', type=int)
-    parser.add_argument('--publish', action='store_true')
-    args = parser.parse_args()
-    api = GitHub()
-    repository = os.environ.get('GITHUB_REPOSITORY', 'solarfren69420/Slopforge')
-    if args.issue_number:
-        issue = api.request(f'/repos/{repository}/issues/{args.issue_number}')
-    else:
-        issue = json.loads(Path(args.event).read_text())['issue']
+def process_issue(api, repository, issue, catalog, publish=False):
     if issue.get('pull_request') or issue['user']['type'] == 'Bot':
         print('Skipping pull request or automated issue')
         return
-    catalog = json.loads((ROOT / 'data/projects.json').read_text())
     result = check_submission(api, issue, catalog)
     if result is None:
         print('Not a submission or correction form; no comment posted')
@@ -164,7 +153,7 @@ def main():
     body = prepare_files(result, number, catalog, output)
     if os.environ.get('GITHUB_STEP_SUMMARY'):
         Path(os.environ['GITHUB_STEP_SUMMARY']).write_text(body)
-    if args.publish:
+    if publish:
         if not api.token: raise SystemExit('Publishing requires GH_TOKEN with issues write permission')
         # Fetch the latest issue again so an edit during the run is not answered with stale data.
         latest = api.request(f'/repos/{repository}/issues/{number}')
@@ -173,6 +162,29 @@ def main():
             return
         upsert_comment(api, repository, number, body)
     print(f'Submission {number}: {result["status"]}')
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    source = parser.add_mutually_exclusive_group()
+    source.add_argument('--event')
+    source.add_argument('--issue-number', type=int)
+    source.add_argument('--all-open', action='store_true')
+    parser.add_argument('--publish', action='store_true')
+    args = parser.parse_args()
+    api = GitHub()
+    repository = os.environ.get('GITHUB_REPOSITORY', 'solarfren69420/Slopforge')
+    catalog = json.loads((ROOT / 'data/projects.json').read_text())
+    if args.all_open:
+        issues = api.pages(f'/repos/{repository}/issues?state=open')
+    elif args.issue_number:
+        issues = [api.request(f'/repos/{repository}/issues/{args.issue_number}')]
+    else:
+        event = args.event or os.environ.get('GITHUB_EVENT_PATH')
+        if not event: raise SystemExit('Pass --event, --issue-number, or --all-open')
+        issues = [json.loads(Path(event).read_text())['issue']]
+    for issue in issues:
+        process_issue(api, repository, issue, catalog, args.publish)
 
 
 if __name__ == '__main__':

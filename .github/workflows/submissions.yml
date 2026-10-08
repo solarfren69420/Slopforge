@@ -63,9 +63,25 @@ jobs:
       - name: Verify issue checks and comment updates with a temporary test issue
         env:
           GH_TOKEN: ${{ github.token }}
+          SUBMISSION_ARTIFACT: submission-smoke-evidence
         run: python3 tests/integration_submissions.py
       - uses: actions/upload-artifact@v4
         with:
           name: submission-smoke-evidence
           path: test-results/submission-*/
           retention-days: 14
+      - name: Load latest canonical repository names
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/maintenance.py fetch-state
+      - name: Check existing human submissions in the inbox
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SUBMISSION_ARTIFACT: submission-backfill-drafts
+        run: python3 scripts/submissions.py --all-open --publish
+      - uses: actions/upload-artifact@v4
+        with:
+          name: submission-backfill-drafts
+          path: test-results/submission-*/
+          retention-days: 90
+          if-no-files-found: ignore
