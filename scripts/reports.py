@@ -14,10 +14,14 @@ def activity(report):
     candidates = discovery.get('candidates', [])
     checked = escape(report.get('generated_at') or 'Awaiting the first scan')
     rows = []
+    flag_labels = {'full_name': 'Repository identity changed', 'archived': 'Archive status changed',
+                   'disabled': 'Availability status changed', 'default_branch': 'Default branch changed',
+                   'latest_release': 'Release changed', 'readme_sha256': 'README changed', 'licenses': 'License files changed'}
     for record in records:
-        flags = record.get('changes', [])[:]
+        flags = [flag_labels.get(flag, flag) for flag in record.get('changes', [])]
         if record.get('archived'): flags.append('archived')
         if record.get('disabled'): flags.append('disabled')
+        if record.get('moved'): flags.append('Repository moved; catalog URL needs review')
         if record.get('result') != 'ok': flags.append(record.get('result', 'not checked'))
         rows.append(f'<tr><td><a href="{safe_link(record.get("repo") or record["requested_repo"])}">{escape(record["id"])}</a></td>'
                     f'<td>{escape(record.get("last_checked") or "No successful check")}</td>'

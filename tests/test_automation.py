@@ -105,6 +105,10 @@ https://github.com/team/editor/blob/main/README.md
         record = observe(api, project)
         self.assertEqual(record['repo'], self.project['repo'])
         self.assertEqual(record['changes'], ['full_name'])
+        self.assertTrue(record['moved'])
+        followup = observe(api, project, record)
+        self.assertEqual(followup['changes'], [])
+        self.assertTrue(followup['moved'], 'Move must remain visible until the catalog URL is reviewed')
 
     def test_missing_repository_is_reported_without_erasing_a_previous_check(self):
         previous = observe(FakeAPI(), self.project)

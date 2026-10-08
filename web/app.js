@@ -104,9 +104,11 @@
   }
   function upstreamDetails(p) {
     const check = upstream[p.id]; if (!check) return '';
-    const flags = [...(check.changes || [])];
+    const flagLabels = {full_name:'Repository identity changed',archived:'Archive status changed',disabled:'Availability status changed',default_branch:'Default branch changed',latest_release:'Release changed',readme_sha256:'README changed',licenses:'License files changed'};
+    const flags = (check.changes || []).map(flag => flagLabels[flag] || flag);
     if (check.archived) flags.push('Archived upstream');
     if (check.disabled) flags.push('Disabled upstream');
+    if (check.moved) flags.push('Repository moved; catalog URL needs review');
     if (check.result !== 'ok') flags.push('Latest check could not complete');
     let release = '';
     if (check.latest_release) {

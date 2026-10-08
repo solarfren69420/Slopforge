@@ -39,6 +39,7 @@ def observe(api, project, previous=None):
         record.update(full_name=meta['full_name'], repo=meta['html_url'], archived=meta['archived'],
                       disabled=meta.get('disabled', False), default_branch=meta['default_branch'],
                       pushed_at=meta.get('pushed_at'))
+        record['moved'] = record['repo'].lower().rstrip('/') != project['repo'].lower().rstrip('/')
         endpoint = '/repos/' + meta['full_name']
         readme = api.request(endpoint + '/readme', missing_ok=True)
         record['readme_sha256'] = digest(readme) if readme else None
@@ -56,7 +57,7 @@ def observe(api, project, previous=None):
         record.update(last_checked=stamp, result='ok')
         if previous.get('last_checked'):
             record['changes'] = [key for key in TRACKED_FIELDS if record.get(key) != previous.get(key)]
-        elif record['repo'].lower().rstrip('/') != project['repo'].lower().rstrip('/'):
+        elif record['moved']:
             record['changes'] = ['full_name']
         record['baseline'] = not bool(previous.get('last_checked'))
     except (APIError, ValueError, KeyError) as error:
@@ -146,7 +147,7 @@ def save_state(api, repository, report):
 
 def markdown(report, repository):
     records = list(report['upstream'].values())
-    attention = [r for r in records if r.get('changes') or r['result'] != 'ok' or r.get('archived') or r.get('disabled')]
+    attention = [r for r in records if r.get('changes') or r['result'] != 'ok' or r.get('archived') or r.get('disabled') or r.get('moved')]
     candidates = report['discovery']['candidates']
     lines = [REPORT_MARKER, '# Weekly catalog review', '', f"Checked: {report['generated_at']}", '',
              f"{len(records)} listings checked · {len(attention)} need attention · {len(candidates)} discovery candidates", '',
@@ -159,6 +160,7 @@ def markdown(report, repository):
         flags = record.get('changes', []) + ([record['result']] if record['result'] != 'ok' else [])
         if record.get('archived'): flags.append('archived')
         if record.get('disabled'): flags.append('disabled')
+        if record.get('moved'): flags.append('repository moved; catalog URL needs review')
         lines.append(f"- [{record['id']}]({record['requested_repo']}): {', '.join(flags)}")
     lines += ['', '## Discovery candidates', '', 'These are leads, not approved listings. Review purpose, provenance, licensing, platforms, and data requirements.', '']
     for c in candidates[:report['discovery']['queue_display_limit']]:
