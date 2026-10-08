@@ -8,6 +8,6 @@
     "render:brand": "node scripts/render_brand.cjs"
   },
   "devDependencies": {
-    "playwright": "1.58.2"
+    "playwright": "1.63.0"
   }
 }
