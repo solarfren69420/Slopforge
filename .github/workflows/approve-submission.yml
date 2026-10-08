@@ -1,0 +1,77 @@
+name: Approve and publish a submission
+on:
+  pull_request_target:
+    types: [edited]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: Submission PR with its Approve and publish checkbox checked
+        required: true
+        type: number
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  statuses: write
+  actions: write
+concurrency:
+  group: approve-submission-${{ github.event.pull_request.number || inputs.pr_number }}
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.pull_request.head.ref, 'submissions/issue-')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number || inputs.pr_number }}
+    steps:
+      # Always use trusted main code. Never check out or execute the incoming PR.
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify maintainer approval and generate the reviewed catalog change
+        id: prepare
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/submission_prs.py prepare --pr-number "$PR_NUMBER"
+      - uses: actions/setup-node@v4
+        if: steps.prepare.outputs.ready == 'true'
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Validate and browser-test the publication
+        if: steps.prepare.outputs.ready == 'true'
+        run: |
+          python3 -m unittest discover -s tests -v
+          node --check web/app.js
+          npm ci
+          npx playwright install --with-deps chromium
+          python3 -m http.server 8080 --bind 127.0.0.1 --directory _site > /tmp/slopforge-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          python3 scripts/wait_for_server.py http://127.0.0.1:8080/
+          SLOPFORGE_URL=http://127.0.0.1:8080/ npm run test:browser
+      - name: Merge the approved PR and request deployment
+        id: finish
+        if: steps.prepare.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/submission_prs.py finish --pr-number "$PR_NUMBER"
+      - name: Explain failed checks on the PR
+        if: failure() && steps.prepare.outputs.ready == 'true' && steps.finish.outcome != 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/submission_prs.py fail --pr-number "$PR_NUMBER"
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.prepare.outputs.ready == 'true'
+        with:
+          name: publication-checks-${{ github.event.pull_request.number || inputs.pr_number }}
+          path: |
+            test-results/*.png
+            test-results/approval-receipt.json
+            /tmp/slopforge-server.log
+          retention-days: 14

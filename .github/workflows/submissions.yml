@@ -6,6 +6,8 @@ on:
     branches: [main]
     paths:
       - scripts/submissions.py
+      - scripts/submission_prs.py
+      - data/submission-reviews/**
       - tests/integration_submissions.py
       - .github/workflows/submissions.yml
   workflow_dispatch:
@@ -15,8 +17,9 @@ on:
         required: true
         type: number
 permissions:
-  contents: read
+  contents: write
   issues: write
+  pull-requests: write
 concurrency:
   group: submission-${{ github.event.issue.number || inputs.issue_number || 'smoke-test' }}
   cancel-in-progress: false
@@ -43,6 +46,7 @@ jobs:
           SUBMISSION_NUMBER: ${{ github.event.issue.number || inputs.issue_number }}
         run: python3 scripts/submissions.py --issue-number "$SUBMISSION_NUMBER" --publish
       - name: Keep submission drafts and review notes
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: submission-${{ github.event.issue.number || inputs.issue_number }}
@@ -80,6 +84,7 @@ jobs:
           SUBMISSION_ARTIFACT: submission-backfill-drafts
         run: python3 scripts/submissions.py --all-open --publish
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: submission-backfill-drafts
           path: test-results/submission-*/

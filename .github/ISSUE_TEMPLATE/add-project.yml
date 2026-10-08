@@ -2,52 +2,129 @@ name: Add a project to Slopforge
 description: Suggest an upstream game project, tool, or engine.
 title: 'Add: '
 body:
-  - type: markdown
-    attributes:
-      value: This form creates an issue in Slopforge's submission inbox. Automated checks prepare a draft; a maintainer reviews it before publication. Do not attach game files.
-  - type: input
-    id: repository
-    attributes:
-      label: Upstream GitHub repository
-      placeholder: https://github.com/owner/project
-    validations:
+- type: markdown
+  attributes:
+    value: This form creates an issue and an automatic draft pull request. Fill the listing details below; a maintainer
+      can approve and publish from the PR with one checkbox. Do not attach game files.
+- type: input
+  id: repository
+  attributes:
+    label: Upstream GitHub repository
+    placeholder: https://github.com/owner/project
+  validations:
+    required: true
+- type: dropdown
+  id: kind
+  attributes:
+    label: Section
+    options:
+    - Games
+    - Tools & software
+  validations:
+    required: true
+- type: dropdown
+  id: method
+  attributes:
+    label: Project type
+    description: Game reimplementation, application clean-room rewrite, source port, original game, independent
+      tool, source-available tool, compatibility layer, or analysis tool.
+    options:
+    - Reimplementation
+    - Clean-room rewrite
+    - Source port
+    - Original open-source game
+    - Game creation platform
+    - Independent open-source tool
+    - Source-available tool
+    - Game engine
+    - Compatibility layer
+    - Reverse engineering tool
+  validations:
+    required: true
+- type: input
+  id: display_name
+  attributes:
+    label: Display name
+    description: Optional; defaults to the repository name.
+- type: textarea
+  id: description
+  attributes:
+    label: Short description
+    description: One or two factual sentences describing the project.
+  validations:
+    required: true
+- type: dropdown
+  id: category
+  attributes:
+    label: Category
+    options:
+    - Simulation
+    - RPG
+    - Adventure
+    - Shooter
+    - Strategy
+    - Racing
+    - Platformer
+    - Sandbox
+    - Graphic design
+    - 3D & VFX
+    - CAD & engineering
+    - GIS & science
+    - Electronics & PCB
+    - Audio & video
+    - Office & productivity
+    - Game engines
+    - Compatibility
+    - Reverse engineering
+  validations:
+    required: true
+- type: dropdown
+  id: platforms
+  attributes:
+    label: Platforms
+    multiple: true
+    description: Select only platforms documented by upstream.
+    options:
+    - Windows
+    - Linux
+    - macOS
+  validations:
+    required: true
+- type: textarea
+  id: setup
+  attributes:
+    label: Data and setup requirements
+    description: State any required original game files, accounts, services, or other setup requirements. Link upstream
+      evidence below.
+  validations:
+    required: true
+- type: textarea
+  id: source_notes
+  attributes:
+    label: Source notes and limitations
+    description: Explain the methodology, development stage, important limitations, and any mirrors.
+  validations:
+    required: true
+- type: textarea
+  id: license_notes
+  attributes:
+    label: License notes
+    description: State the upstream source-code license and any separate asset or branding terms. Include a license
+      link below.
+  validations:
+    required: true
+- type: textarea
+  id: evidence
+  attributes:
+    label: What does it do, and where does upstream document that?
+    description: Link its README or documentation. Include platform targets, data requirements, license, and development
+      status.
+  validations:
+    required: true
+- type: checkboxes
+  id: content
+  attributes:
+    label: Content policy
+    options:
+    - label: This suggestion does not attach ROMs, proprietary game assets, cracks, leaked source, or license bypasses.
       required: true
-  - type: dropdown
-    id: kind
-    attributes:
-      label: Section
-      options: [Games, Tools & software]
-    validations:
-      required: true
-  - type: dropdown
-    id: method
-    attributes:
-      label: Project type
-      description: Game reimplementation, application clean-room rewrite, source port, original game, independent tool, source-available tool, compatibility layer, or analysis tool.
-      options:
-        - Reimplementation
-        - Clean-room rewrite
-        - Source port
-        - Original open-source game
-        - Game creation platform
-        - Independent open-source tool
-        - Source-available tool
-        - Game engine
-        - Compatibility layer
-        - Reverse engineering tool
-    validations:
-      required: true
-  - type: textarea
-    id: evidence
-    attributes:
-      label: What does it do, and where does upstream document that?
-      description: Link its README or documentation. Include platform targets, data requirements, license, and development status.
-    validations:
-      required: true
-  - type: checkboxes
-    id: content
-    attributes:
-      label: Content policy
-      options:
-        - label: This suggestion does not attach ROMs, proprietary game assets, cracks, leaked source, or license bypasses.
-          required: true

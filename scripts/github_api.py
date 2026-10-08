@@ -54,7 +54,12 @@ class GitHub:
                     time.sleep(delay)
                     continue
                 # Never print request headers or token values.
-                raise APIError(error.code, error.reason) from None
+                try:
+                    message = json.loads(error.read()).get('message', error.reason)
+                except (ValueError, AttributeError):
+                    message = error.reason
+                if self.token: message = str(message).replace(self.token, '[redacted]')
+                raise APIError(error.code, str(message)[:500]) from None
             except (urllib.error.URLError, TimeoutError) as error:
                 if attempt == 2:
                     raise APIError(0, 'Network request failed') from error

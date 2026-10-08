@@ -22,20 +22,26 @@ The Pages build reads the current state through the GitHub API, or uses the comm
 
 The project form opens an issue after GitHub sign-in. The submission workflow runs for human-authored issue opens, edits, and reopens. It validates the GitHub URL, checks public metadata and canonical repository identity, detects existing listings, checks form selections and evidence/checkbox presence, and flags forks, archival status, and uncertain licensing. Corrections receive an acknowledgment for human review; arbitrary issues and bot-created dashboard issues are ignored.
 
-For a new repository it prepares `project.json`, `catalog.patch`, `check.json`, and `review.md` in the `submission-N` artifact linked by its bot comment. The patch appends a draft to the catalog. **Blank fields deliberately fail catalog validation**: no platforms, license conclusions, data requirements, methodology, or human review date are invented. A duplicate gets an explanation without an addition patch. The checker updates its existing bot-authored comment when the submitter edits the form. Drafts expire after 90 days; recheck the issue through **Run workflow**, entering the issue number, to regenerate them.
+For each new valid repository it opens one draft PR from `submissions/issue-N`, containing `data/submissions/issue-N.json` and a readable listing table. Name, description, category, platforms, setup, source notes, and license notes are collected by the form. Repository identity and technology come from GitHub metadata; monogram/art defaults are original symbolic artwork. Existing prepared review records can supply missing fields for previously submitted projects. None of this publishes a listing or asserts a maintainer approval. A duplicate gets an explanation without an addition PR.
+
+The checker links the PR in its existing bot comment. Edits refresh the same proposal, preserve fields a maintainer filled in the proposal, and never reopen closed PRs. Once approval is in progress, issue edits do not overwrite the approved proposal. Artifacts remain an optional backup, retained for 90 days, rather than a required publication step.
 
 Maintainer steps:
 
-1. Open the issue, inspect upstream documentation/license and the contributor's evidence, and decide whether it belongs.
-2. Download the artifact from its linked Actions run. Apply `catalog.patch` on a review branch with `git apply`, or copy the draft record into the catalog.
-3. Complete every review field, check labels and data requirements, and set the actual human review date. For rewrites/custom terms, include commit-pinned evidence and license/development notes.
-4. Run `python3 scripts/build.py --update-docs`, then the catalog and browser checks. Open a pull request with the issue link; merge after review and close the submission.
+1. Open the linked draft PR and review its listing table and upstream sources. If information is missing, ask the submitter to edit the form, or edit the proposal file through GitHub's web editor.
+2. Tick **Approve and publish this reviewed listing** in the PR description. This explicitly authorizes publication of the proposed metadata.
 
-No submission automatically creates or merges a pull request. Prepared patches avoid requiring the separate GitHub setting that allows Actions to create PRs. No personal token is needed: maintenance has contents/issue write access, and submission checks have issue write access. Issue text is read as data, never interpolated into executable shell commands. The checker does not fetch arbitrary submitted websites or execute upstream code.
+The approval workflow runs only trusted main-branch code. It checks the approving actor's repository write permission, reads only the proposal JSON from the incoming PR, and rebuilds the PR from the current trusted main tree. It sets the human review date at approval, validates the catalog, generates the README/catalog/card art, and commits only those files plus the proposal record. Incoming PR scripts or workflows are never executed or carried into the rebuilt tree.
+
+After catalog and browser tests pass, it verifies that approval has not been withdrawn and that the PR head and main branch have not changed during checks. It marks the draft ready, merges it, closes the linked submission, and explicitly dispatches Pages deployment (a merge using `GITHUB_TOKEN` does not trigger normal push workflows). Failed checks leave the PR unmerged, report the issue in a bot comment, and clear the checkbox so a maintainer can retry after fixing it. Repository merge policies still apply.
+
+**One-time GitHub setting:** under repository **Settings → Actions → General → Workflow permissions**, enable **Allow GitHub Actions to create and approve pull requests**. The default token permission can remain read-only; each workflow declares its required permissions. If GitHub blocks PR creation, the bot explains this setting, preserves the prepared branch, and supplies a compare link. Enable the setting and rerun **Check project submissions** for the issue number. No personal token is required.
+
+Submission preparation has contents/issue/PR write access. Approval additionally needs commit-status write access and Actions write access to dispatch deployment. Issue text is treated as data, never executable shell text. The checker does not fetch arbitrary submitted websites or execute upstream code. Contributors' text cannot insert an approval checkbox into the PR's structured review table.
 
 A push changing the submission checker/workflow also runs a live integration smoke test. It creates a clearly named temporary bot issue, verifies draft generation, duplicate detection, and idempotent comment updates, then closes the issue. This checks real API permissions; human issue-event delivery is provided by GitHub's configured Issues trigger.
 
-After that test, the workflow checks existing open human submissions and corrections, updating its own comments and saving prepared files in the `submission-backfill-drafts` artifact. This processes requests submitted before the checker was installed. Unrelated issues remain untouched.
+After that test, the workflow checks existing open human submissions and corrections, opening their proposal PRs, updating its own comments, and saving backup files in the `submission-backfill-drafts` artifact. This processes requests submitted before the checker was installed. Unrelated issues remain untouched.
 
 ## Browser checks
 

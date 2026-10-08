@@ -87,9 +87,25 @@ def check_submission(api, issue, catalog):
     # These placeholders intentionally fail catalog validation until a curator completes them.
     draft = {'id': identifier, 'name': meta['name'], 'repo': canonical, 'kind': kind or '', 'category': '',
              'method': method if method in METHODS else '', 'description': meta.get('description') or '',
-             'data_note': '', 'source_note': '', 'language': meta.get('language') or '', 'platforms': [],
+             'data_note': '', 'source_note': '', 'language': meta.get('language') or 'Not reported by GitHub', 'platforms': [],
              'tags': [], 'monogram': '', 'art': 'code', 'reviewed': '', 'featured': False, 'hue': 270 if kind == 'tools' else 190,
              'license_note': '', 'source_urls': ([{'label': 'Upstream README (requires review)', 'url': readme['html_url']}] if readme else [])}
+    # The form collects the listing; metadata supplies identity, not invented setup claims.
+    mapping = {'Display name': 'name', 'Short description': 'description', 'Category': 'category',
+               'Data and setup requirements': 'data_note', 'Source notes and limitations': 'source_note',
+               'License notes': 'license_note'}
+    for label, key in mapping.items():
+        value = form.get(label, '')
+        if value and value != '_No response_': draft[key] = value
+    selected = form.get('Platforms', '').split(',')
+    draft['platforms'] = [p.strip() for p in selected if p.strip() in ('Windows', 'Linux', 'macOS')]
+    draft['monogram'] = re.sub(r'[^A-Za-z0-9]', '', draft['name'])[:3].upper()
+    draft['art'] = 'strategy' if kind == 'games' else 'code'
+    seed = ROOT / 'data/submission-reviews' / (str(issue.get('number', 0)) + '.json')
+    if seed.exists():
+        prepared = json.loads(seed.read_text())['project']
+        if prepared['repo'].lower() == canonical.lower():
+            draft.update(prepared)
     return {'status': 'draft-ready', 'repo': canonical, 'messages': messages,
             'license_hint': license_info.get('spdx_id'), 'draft': draft,
             'missing_review': ['purpose and description', 'category and project type', 'platforms', 'data/setup requirements',
@@ -105,7 +121,14 @@ def comment_body(result, number):
     if result.get('draft'):
         run = os.environ.get('GITHUB_RUN_ID')
         repository = os.environ.get('GITHUB_REPOSITORY', 'solarfren69420/Slopforge')
-        lines += ['', 'A draft project record and catalog patch are prepared. Their blank review fields must be completed; they are not a publishable listing.', '',
+        if result.get('pull_request_url'):
+            lines += ['', f"**[Review this submission’s pull request]({result['pull_request_url']})**", '',
+                      'Review the listing and tick **Approve and publish this reviewed listing** in the PR. The workflow validates it, generates the catalog/docs/artwork, tests the storefront, and merges/deploys it. Missing fields are shown in the PR; the submitter can update this form.']
+            if result.get('pull_request_state') == 'closed':
+                lines += ['', 'The previous PR is closed and will not be reopened automatically. Check its outcome; submit a new request if appropriate.']
+        elif result.get('pr_error'):
+            lines += ['', result['pr_error'], '', 'The draft branch is ready: ' + result['compare_url']]
+        lines += ['', 'Draft files are also available as an artifact.', '',
                   'Maintainer checklist:', ''] + ['- [ ] Verify ' + field for field in result['missing_review']]
         if run:
             artifact = os.environ.get('SUBMISSION_ARTIFACT', f'submission-{number}')
@@ -160,8 +183,14 @@ def process_issue(api, repository, issue, catalog, publish=False):
         if latest.get('body') != issue.get('body'):
             print('Issue edited during run; newer run will handle it')
             return
+        if result.get('draft'):
+            from submission_prs import open_proposal
+            proposal = open_proposal(api, repository, issue, result)
+            result.update(proposal)
+            body = prepare_files(result, number, catalog, output)
         upsert_comment(api, repository, number, body)
     print(f'Submission {number}: {result["status"]}')
+    return bool(result.get('pr_error'))
 
 
 def main():
@@ -183,8 +212,11 @@ def main():
         event = args.event or os.environ.get('GITHUB_EVENT_PATH')
         if not event: raise SystemExit('Pass --event, --issue-number, or --all-open')
         issues = [json.loads(Path(event).read_text())['issue']]
+    blocked = False
     for issue in issues:
-        process_issue(api, repository, issue, catalog, args.publish)
+        blocked = process_issue(api, repository, issue, catalog, args.publish) or blocked
+    if blocked:
+        raise SystemExit('GitHub blocked PR creation. Enable Actions PR creation in repository settings and rerun this checker.')
 
 
 if __name__ == '__main__':
