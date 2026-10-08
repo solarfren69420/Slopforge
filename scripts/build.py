@@ -8,6 +8,7 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 from art import generate
+from reports import activity
 
 ROOT = Path(__file__).resolve().parents[1]
 METHODS = {
@@ -71,10 +72,13 @@ def main():
     if output.exists(): shutil.rmtree(output)
     shutil.copytree(ROOT/'web', output)
     shutil.copyfile(ROOT/'data/projects.json',output/'projects.json')
+    report=json.loads((ROOT/'data/automation-report.json').read_text())
+    (output/'automation-report.json').write_text(json.dumps(report,indent=2)+'\n')
+    (output/'activity.html').write_text(activity(report))
     (output/'.nojekyll').touch()
     (output/'404.html').write_text((output/'index.html').read_text().replace('<head>','<head>\n  <base href="/Slopforge/">'))
     (output/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://solarfren69420.github.io/Slopforge/sitemap.xml\n')
-    (output/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://solarfren69420.github.io/Slopforge/</loc></url></urlset>')
+    (output/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://solarfren69420.github.io/Slopforge/</loc></url><url><loc>https://solarfren69420.github.io/Slopforge/activity.html</loc></url></urlset>')
     if args.update_docs:
         (ROOT/'CATALOG.md').write_text(markdown(projects))
         readme=ROOT/'README.md'

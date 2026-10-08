@@ -4,7 +4,7 @@
   const escape = (value) => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const views = ['discover', 'games', 'tools', 'saved'];
   const repoRoot = 'https://github.com/solarfren69420/Slopforge';
-  let projects = [], favorites = new Set(), storageAvailable = true, toastTimer, searchTimer;
+  let projects = [], upstream = {}, favorites = new Set(), storageAvailable = true, toastTimer, searchTimer;
   const state = {view:'discover', q:'', category:'', platform:'', method:'', tag:'', sort:'featured'};
   const categoryIcons = {'Simulation':'▤','RPG':'♜','Adventure':'◇','Shooter':'⌖','Strategy':'⚑','Racing':'✣','Platformer':'▥','Sandbox':'▧','Graphic design':'◈','3D & VFX':'⬡','CAD & engineering':'⌑','GIS & science':'◎','Electronics & PCB':'⌘','Audio & video':'♫','Office & productivity':'▤','Game engines':'✣','Compatibility':'⇄','Reverse engineering':'⌬'};
   const platformShort = {Windows:'Win',Linux:'Linux',macOS:'Mac'};
@@ -100,11 +100,27 @@
     const sources = (p.source_urls || []).filter(source => {
       try { const url = new URL(source.url); return url.protocol === 'https:' && ['github.com','raw.githubusercontent.com'].includes(url.hostname); } catch { return false; }
     });
-    return `${p.development_status || p.license_note ? `<div class="detail-meta">${p.development_status ? `<div><small>UPSTREAM DEVELOPMENT STATUS</small>${escape(p.development_status)}</div>` : ''}${p.license_note ? `<div><small>UPSTREAM LICENSE</small>${escape(p.license_note)}</div>` : ''}</div>` : ''}${sources.length ? `<h3>Reviewed sources</h3><p>${sources.map(source => `<a class="detail-source" href="${escape(source.url)}" target="_blank" rel="noopener noreferrer">${escape(source.label)} ↗</a>`).join('<br>')}</p>` : ''}`;
+    return `${p.development_status || p.license_note ? `<div class="detail-meta">${p.development_status ? `<div><small>UPSTREAM DEVELOPMENT STATUS</small>${escape(p.development_status)}</div>` : ''}${p.license_note ? `<div><small>UPSTREAM LICENSE</small>${escape(p.license_note)}</div>` : ''}</div>` : ''}${sources.length ? `<h3>Reviewed sources</h3><p>${sources.map(source => `<a class="detail-source reviewed-source" href="${escape(source.url)}" target="_blank" rel="noopener noreferrer">${escape(source.label)} ↗</a>`).join('<br>')}</p>` : ''}`;
+  }
+  function upstreamDetails(p) {
+    const check = upstream[p.id]; if (!check) return '';
+    const flags = [...(check.changes || [])];
+    if (check.archived) flags.push('Archived upstream');
+    if (check.disabled) flags.push('Disabled upstream');
+    if (check.result !== 'ok') flags.push('Latest check could not complete');
+    let release = '';
+    if (check.latest_release) {
+      try {
+        const url = new URL(check.latest_release.html_url);
+        if (url.protocol === 'https:' && url.hostname === 'github.com') release = `<a class="detail-source" href="${escape(url.href)}" target="_blank" rel="noopener noreferrer">${escape(check.latest_release.tag_name)} ↗</a>`;
+      } catch {}
+    }
+    return `<h3>Automated upstream check</h3><div class="detail-meta"><div><small>LAST SUCCESSFUL CHECK (UTC)</small>${escape(check.last_checked || 'No successful check yet')}</div><div><small>LATEST UPSTREAM RELEASE</small>${release || 'No release recorded'}</div></div><p>${escape(flags.length ? flags.join(' · ') : check.baseline ? 'First successful check established a baseline.' : 'No tracked changes since the previous successful check.')} These observations do not replace the listing review.</p><a class="detail-source" href="activity.html">Activity & review queue →</a>`;
   }
   function showDetail(id, setHash = true) {
     const p = projects.find(p => p.id === id); if (!p) return;
     $('#detail-body').innerHTML = `<div class="dialog-top"><span class="eyebrow">${escape(p.category)} / ${p.kind.toUpperCase()}</span><button class="close-button" data-close aria-label="Close project details">×</button></div>${art(p,true)}<h2 id="detail-title">${escape(p.name)}</h2><p>${escape(p.description)}</p><div class="detail-meta"><div><small>PROJECT TYPE</small>${escape(p.method)}</div><div><small>UPSTREAM-LISTED PLATFORMS</small>${escape(p.platforms.join(' / '))}</div><div><small>PRIMARY TECHNOLOGY</small>${escape(p.language)}</div><div><small>LISTING REVIEWED</small>${escape(p.reviewed)}</div></div><h3>Data & setup</h3><p class="source-note">${escape(p.data_note)}</p><h3>Know the source</h3><p>${escape(p.source_note)}</p><a class="detail-source" href="${escape(p.repo)}" target="_blank" rel="noopener noreferrer">${escape(p.repo)} ↗</a>${reviewDetails(p)}<p>Repository identity and basic purpose reviewed. Slopforge has not built or gameplay-tested this project. Check upstream documentation for current requirements, licensing, and support.</p><div class="dialog-actions"><a class="button primary" href="${escape(p.repo)}" target="_blank" rel="noopener noreferrer">View upstream GitHub ↗</a><button class="button glass" data-copy="${escape(p.id)}">Copy project link</button><a class="button glass" href="${repoRoot}/issues/new?template=correction.yml&title=${encodeURIComponent('Correction: '+p.name)}">Suggest a correction ↗</a></div>`;
+    $('#detail-body').insertAdjacentHTML('beforeend', upstreamDetails(p));
     if (!$('#detail').open) $('#detail').showModal();
     if(setHash) { const url = new URL(location.href);url.hash = 'project=' + p.id;history.replaceState({},'',url); }
   }
@@ -146,6 +162,11 @@
       favorites = new Set([...favorites].filter(id => projects.some(p => p.id === id)));
       $('#total-count').textContent = projects.length; $('#game-count').textContent = projects.filter(p => p.kind === 'games').length; $('#tool-count').textContent = projects.filter(p => p.kind === 'tools').length;
       readRoute(); render(); handleHash();
+      // Optional observations never hold up the searchable catalog.
+      fetch('automation-report.json').then(response => response.ok ? response.json() : null).then(report => {
+        upstream = report?.upstream || {};
+        if ($('#detail').open) handleHash();
+      }).catch(() => {});
     } catch(error) {
       $('#result-count').textContent = 'Catalog unavailable';$('#empty').hidden = false;$('#empty-title').textContent = 'The forge couldn’t load its catalog.';$('#empty-copy').textContent = 'Refresh the page, or browse the complete catalog on GitHub.';$('#empty-reset').hidden = true;$('#shelves').innerHTML = `<a class="button primary" href="${repoRoot}/blob/main/CATALOG.md">Browse the GitHub catalog ↗</a>`;console.error(error);
     }

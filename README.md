@@ -6,7 +6,7 @@
 
 A community forge for game revivals, original open-source games, creative software, engines, compatibility layers, and reverse engineering tools. Find a project that matters to you, meet its maintainers, and follow the source.
 
-[**Explore Slopforge →**](https://solarfren69420.github.io/Slopforge/) · [Project catalog](CATALOG.md) · [Submit a project](https://github.com/solarfren69420/Slopforge/issues/new?template=add-project.yml) · [Suggest a correction](https://github.com/solarfren69420/Slopforge/issues/new?template=correction.yml)
+[**Explore Slopforge →**](https://solarfren69420.github.io/Slopforge/) · [Project catalog](CATALOG.md) · [Activity & review queue](https://solarfren69420.github.io/Slopforge/activity.html) · [Submit a project](https://github.com/solarfren69420/Slopforge/issues/new?template=add-project.yml) · [Submission inbox](https://github.com/solarfren69420/Slopforge/issues) · [Suggest a correction](https://github.com/solarfren69420/Slopforge/issues/new?template=correction.yml)
 
 <!-- catalog-stats:start -->
 **49 projects** · 15 games · 34 tools & software
@@ -84,7 +84,7 @@ The forge banner is original AI-generated mood artwork, created with the built-i
 
 ## Add or update a project
 
-Submit an [addition](https://github.com/solarfren69420/Slopforge/issues/new?template=add-project.yml), report a [correction](https://github.com/solarfren69420/Slopforge/issues/new?template=correction.yml), or open a pull request. Listings are reviewed before merging; submissions are not automatically published.
+Submit an [addition](https://github.com/solarfren69420/Slopforge/issues/new?template=add-project.yml), report a [correction](https://github.com/solarfren69420/Slopforge/issues/new?template=correction.yml), or open a pull request. **Submissions create GitHub issues in [this inbox](https://github.com/solarfren69420/Slopforge/issues); a GitHub account is required.** The checker responds on the issue, validates the upstream repository, flags duplicates, and prepares a draft JSON record and catalog patch in a linked Actions artifact. Edits update the same bot comment. Maintainers complete the blank review fields and review the supplied evidence before merging; submissions are not automatically published.
 
 The catalog lives in [`data/projects.json`](data/projects.json). Keep one entry per upstream repository. Include a short description, accurate method label, data requirements, platform families, source notes, review date, and relevant tags. Prefer the original maintainer's repository. Explain mirrors, early development, and requirements explicitly. Do not invent completion percentages, star counts, compatibility guarantees, or endorsements.
 
@@ -123,11 +123,19 @@ Set `CHROME_PATH` to use an existing Chrome binary. Browser checks cover the cat
 
 ## GitHub Pages
 
-The workflow [Build and deploy Slopforge](.github/workflows/pages.yml) validates the catalog and publishes `_site/` on pushes to `main`. Pull requests run validation without deployment. In repository **Settings → Pages**, the publishing source is **GitHub Actions**.
+The workflow [Build and deploy Slopforge](.github/workflows/pages.yml) validates the catalog, builds `_site/`, and runs Chromium browser tests before publishing on pushes to `main`. Pull requests run the same checks without deployment. Browser evidence is kept for 14 days. In repository **Settings → Pages**, the publishing source is **GitHub Actions**.
 
 Website: **https://solarfren69420.github.io/Slopforge/**
 
 The site includes Open Graph and Twitter card metadata pointing to [`social-preview.jpg`](web/assets/social-preview.jpg). GitHub's repository social preview is a separate setting: upload this same image under **Settings → General → Social preview** to replace GitHub's default language-color preview. Committing the image does not set that repository preference.
+
+## Automated maintenance
+
+[Weekly upstream checks and discovery](.github/workflows/maintenance.yml) runs Tuesdays at **15:23 UTC / 8:23 a.m. Arizona time**, or manually through Actions. GitHub may delay scheduled runs. It checks all listed repositories for moves, archival/disabled status, latest non-prerelease releases, and README/root-license file changes. Successful check dates are separate from human review dates; an API failure preserves the last successful baseline and is reported for attention.
+
+Discovery scans the organizations and bounded topic/keyword searches in [`data/automation-config.json`](data/automation-config.json), excludes existing listings/forks/archived repos, and preserves a deduplicated candidate queue. Search coverage is not exhaustive, and discovery candidates are not approved listings. A weekly bot issue in the [Issues inbox](https://github.com/solarfren69420/Slopforge/issues) collects results. Observations persist on the `automation/state` branch, and the workflow rebuilds the public [activity page](https://solarfren69420.github.io/Slopforge/activity.html) and per-project check details after each scan.
+
+Automation uses GitHub Actions' built-in token, with no personal API key or visitor tracking. It does not automatically approve projects, change reviewed descriptions/licenses, or update human review dates. See [AUTOMATION.md](AUTOMATION.md) for configuration, draft review, limitations, and recovery.
 
 ## Review scope
 

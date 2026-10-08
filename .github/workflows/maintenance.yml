@@ -1,0 +1,53 @@
+name: Weekly upstream checks and discovery
+on:
+  schedule:
+    - cron: '23 15 * * 2'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/maintenance.py
+      - scripts/github_api.py
+      - data/automation-config.json
+      - .github/workflows/maintenance.yml
+permissions:
+  contents: read
+concurrency:
+  group: weekly-catalog-maintenance
+  cancel-in-progress: false
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check upstream and discover review candidates
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/maintenance.py collect
+      - name: Persist observations and update the review inbox
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/maintenance.py publish
+      - name: Keep scan reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-review
+          path: data/automation-report.*
+          retention-days: 90
+  publish-site:
+    needs: scan
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "generated_at": null,
+  "upstream": {},
+  "discovery": {
+    "checked_at": null,
+    "candidates": [],
+    "errors": [],
+    "queue_display_limit": 100,
+    "scope": "The first automated scan will populate this report. Candidates require human review."
+  }
+}

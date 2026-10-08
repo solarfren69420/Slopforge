@@ -29,7 +29,7 @@ const url=process.env.SLOPFORGE_URL || 'http://localhost:8080';
   const family=catalog.projects.filter(p=>p.tags.includes('ArtCraft'));
   await click('[data-tag="ArtCraft"]');assert.equal(await count(),family.length);
   await page.locator('#method').selectOption('Clean-room rewrite');assert.equal(await count(),family.filter(p=>p.method==='Clean-room rewrite').length);
-  await click('[data-detail="effectcraft"]');assert.match(await page.locator('#detail-body').innerText(),/AEP\/AEPX/);assert.equal(await page.locator('#detail-body a.detail-source').count(),4);
+  await click('[data-detail="effectcraft"]');assert.match(await page.locator('#detail-body').innerText(),/AEP\/AEPX/);assert.equal(await page.locator('#detail-body a.reviewed-source').count(),catalog.projects.find(p=>p.id==='effectcraft').source_urls.length);
   await page.keyboard.press('Escape');await page.waitForFunction(()=>!location.hash);
   await page.locator('#method').selectOption('Source-available tool');assert.equal(await count(),1);
   await click('[data-detail="artcraft"]');assert.match(await page.locator('#detail-body').innerText(),/Custom ArtCraft fair-source/);
@@ -65,7 +65,22 @@ const url=process.env.SLOPFORGE_URL || 'http://localhost:8080';
     if(width===390)await page.screenshot({path:path.join(output,'mobile.png'),fullPage:true});
     if(width<720){await click('.main-nav [data-view="tools"]');assert.equal(await count(),catalog.projects.filter(p=>p.kind==='tools').length);await page.locator('#mobile-category').selectOption('CAD & engineering');assert.equal(await count(),catalog.projects.filter(p=>p.kind==='tools'&&p.category==='CAD & engineering').length);await page.locator('#mobile-platform').selectOption('Linux');assert.equal(await count(),catalog.projects.filter(p=>p.kind==='tools'&&p.category==='CAD & engineering'&&p.platforms.includes('Linux')).length);}
   }
+  const baseUrl=url.endsWith('/')?url:url+'/';
+  const report=await (await page.request.get(new URL('automation-report.json',baseUrl).href)).json();
+  await page.goto(new URL('activity.html',baseUrl).href);
+  assert.equal(await page.locator('h1').innerText(),'Activity & review queue');
+  assert.equal(await page.locator('tbody tr').count(),Object.keys(report.upstream).length);
+  assert.equal(await page.locator('.candidate-grid article').count(),Math.min(report.discovery.candidates.length,report.discovery.queue_display_limit));
+  assert.equal(await page.locator('a').filter({hasText:'Submission inbox'}).getAttribute('href'),'https://github.com/solarfren69420/Slopforge/issues');
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'Activity page overflow');
+  if(Object.keys(report.upstream).length){
+    await page.goto(new URL('#project=openrct2',baseUrl).href);await ready();
+    await page.waitForFunction(()=>document.querySelector('#detail-body').textContent.includes('LAST SUCCESSFUL CHECK'));
+    assert.match(await page.locator('#detail-body').innerText(),/These observations do not replace the listing review/);
+  }
   assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);
-  console.log('Browser checks passed: inventory, links, search, combined filters, sorting, favorites, persistence, empty states, shared URLs, dialogs, history, keyboard, and six responsive widths.');
+  await page.route('**/automation-report.json',route=>route.abort());
+  await page.goto(baseUrl);await ready();assert.equal(await count(),catalog.projects.length);
+  console.log('Browser checks passed: inventory, links, search, filters, favorites, persistence, URLs, dialogs, keyboard, six widths, activity queue, and catalog loading without optional tracking.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

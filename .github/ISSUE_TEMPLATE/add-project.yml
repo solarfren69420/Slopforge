@@ -2,6 +2,9 @@ name: Add a project to Slopforge
 description: Suggest an upstream game project, tool, or engine.
 title: 'Add: '
 body:
+  - type: markdown
+    attributes:
+      value: This form creates an issue in Slopforge's submission inbox. Automated checks prepare a draft; a maintainer reviews it before publication. Do not attach game files.
   - type: input
     id: repository
     attributes:
@@ -16,11 +19,22 @@ body:
       options: [Games, Tools & software]
     validations:
       required: true
-  - type: input
+  - type: dropdown
     id: method
     attributes:
       label: Project type
       description: Game reimplementation, application clean-room rewrite, source port, original game, independent tool, source-available tool, compatibility layer, or analysis tool.
+      options:
+        - Reimplementation
+        - Clean-room rewrite
+        - Source port
+        - Original open-source game
+        - Game creation platform
+        - Independent open-source tool
+        - Source-available tool
+        - Game engine
+        - Compatibility layer
+        - Reverse engineering tool
     validations:
       required: true
   - type: textarea

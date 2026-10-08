@@ -1,0 +1,71 @@
+name: Check project submissions
+on:
+  issues:
+    types: [opened, edited, reopened]
+  push:
+    branches: [main]
+    paths:
+      - scripts/submissions.py
+      - tests/integration_submissions.py
+      - .github/workflows/submissions.yml
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Existing submission or correction issue to recheck
+        required: true
+        type: number
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: submission-${{ github.event.issue.number || inputs.issue_number || 'smoke-test' }}
+  cancel-in-progress: false
+jobs:
+  check:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'issues' && github.event.issue.user.type != 'Bot')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Load canonical upstream names for duplicate checks
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/maintenance.py fetch-state
+      - name: Check issue form and prepare a review draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SUBMISSION_NUMBER: ${{ github.event.issue.number || inputs.issue_number }}
+        run: python3 scripts/submissions.py --issue-number "$SUBMISSION_NUMBER" --publish
+      - name: Keep submission drafts and review notes
+        uses: actions/upload-artifact@v4
+        with:
+          name: submission-${{ github.event.issue.number || inputs.issue_number }}
+          path: test-results/submission-*/
+          retention-days: 90
+          if-no-files-found: ignore
+  integration:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify issue checks and comment updates with a temporary test issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tests/integration_submissions.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: submission-smoke-evidence
+          path: test-results/submission-*/
+          retention-days: 14

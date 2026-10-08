@@ -1,0 +1,18 @@
+{
+  "organizations": ["storytold"],
+  "queries": [
+    "topic:game-reimplementation archived:false fork:false",
+    "topic:source-port archived:false fork:false",
+    "topic:decompilation archived:false fork:false",
+    "topic:clean-room archived:false fork:false",
+    "\"clean-room\" \"Rust\" in:description archived:false fork:false",
+    "topic:open-source-game archived:false fork:false",
+    "topic:creative-tools archived:false fork:false",
+    "topic:game-engine archived:false fork:false",
+    "topic:compatibility-layer archived:false fork:false"
+  ],
+  "search_pages": 2,
+  "search_page_size": 30,
+  "candidate_limit": 100,
+  "excluded_repositories": []
+}
