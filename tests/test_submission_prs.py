@@ -114,6 +114,8 @@ class PRTests(unittest.TestCase):
     def test_approval_generates_catalog_docs_and_art_without_incoming_code(self):
         project = self.project
         pr = self.pr
+        baseline = json.loads((ROOT / 'data/projects.json').read_text())
+        baseline['projects'] = [p for p in baseline['projects'] if p['id'] != project['id'] and p['repo'] != project['repo']]
         def inline(body):
             return {'encoding': 'base64', 'content': base64.b64encode(body).decode()}
         class API:
@@ -125,6 +127,7 @@ class PRTests(unittest.TestCase):
                 if '/contents/data/submissions/' in path:
                     return inline(json.dumps({'issue_number': 3, 'project': project}).encode())
                 filename = path.split('/contents/')[1].split('?')[0]
+                if filename == 'data/projects.json': return inline(json.dumps(baseline).encode())
                 return inline((ROOT / filename).read_bytes())
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -139,7 +142,7 @@ class PRTests(unittest.TestCase):
             self.assertEqual(catalog['projects'][-1]['id'], 'fheroes2')
             self.assertTrue(catalog['projects'][-1]['reviewed'])
             self.assertIn('fheroes2', files['CATALOG.md'])
-            self.assertIn('**50 projects**', files['README.md'])
+            self.assertIn(f'**{len(baseline["projects"]) + 1} projects**', files['README.md'])
             self.assertIn('<svg', files['web/assets/cards/fheroes2.svg'])
 
 
